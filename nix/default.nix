@@ -69,7 +69,7 @@
     isNormalUser = true;
     extraGroups = [ "wheel" ];
     packages = with pkgs; [
-      alacritty
+      unstable.alacritty
       fd
       google-chrome
       minecraft

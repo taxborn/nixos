@@ -20,6 +20,11 @@
     
     ".background-image".source = ../dotfiles/wallpapers/lakeside.png;
 
+    ".config/alacritty" = {
+      source = ../dotfiles/alacritty;
+      recursive = true;
+    };
+
     ".config/i3/config" = {
       source = ../dotfiles/i3/config;
       force = true; # There may be a more general way to do this:

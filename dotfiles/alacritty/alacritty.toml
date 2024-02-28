@@ -1,0 +1,15 @@
+import = [
+  "~/.config/alacritty/catppuccin-mocha.toml"
+]
+
+live_config_reload = true
+
+[scrolling]
+history = 100000
+
+[font]
+normal = { family = "JetBrainsMono Nerd Font", style = "Semibold" }
+bold = { family = "JetBrainsMono Nerd Font", style = "Extrabold" }
+italic = { family = "JetBrainsMono Nerd Font", style = "Semibold Italic" }
+bold_italic = { family = "JetBrainsMono Nerd Font", style = "Extrabold Italic" }
+size = 11
