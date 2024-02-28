@@ -16,10 +16,6 @@
 
   networking.hostName = "euclid";
 
-  environment.interactiveShellInit = ''
-    alias rebuild="sudo nixos-rebuild switch --flake /home/taxborn/dev/code/nixos/#euclid"
-  '';
-
   services.xserver = {
     # TODO: why is the mouse so god damn tiny
     dpi = 180; # 261 is the 'actual' dpi, but I find this value to be better

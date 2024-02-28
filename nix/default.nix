@@ -21,6 +21,8 @@
       package = pkgs.i3-gaps; # Ensure i3 is i3-gaps
     };
 
+    windowManager.dwm.enable = true;
+
     # Enable touchpad support (enabled default in most desktopManager).
     libinput.enable = true;
 
@@ -96,6 +98,7 @@
     neofetch
     pavucontrol
     rustup
+    st
     unzip
     vlc
     wget
@@ -106,6 +109,11 @@
     unstable.python312Full
     unstable.python312Packages.pip
   ];
+
+  # Alias `rebuild` to rebuild the os
+  environment.interactiveShellInit = ''
+    alias rebuild="sudo nixos-rebuild switch --flake /home/taxborn/dev/code/nixos/#$(hostname)"
+  '';
 
   programs._1password.enable = true;
   programs._1password-gui = {
