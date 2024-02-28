@@ -9,7 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       # Include the default nix configuration
-      ../../nix
+      ../default.nix
       nixos-hardware.nixosModules.dell-xps-15-9520-nvidia
       nixos-hardware.nixosModules.common-hidpi
     ];

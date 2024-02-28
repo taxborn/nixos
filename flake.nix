@@ -1,5 +1,4 @@
-{
-  description = "Braxton's NixOS configuration";
+{ description = "Braxton's NixOS configuration";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
