@@ -49,6 +49,12 @@
       recursive = true;
     };
 
+    ".config/i3/config" = {
+      source = ../dotfiles/i3/config;
+      force = true; # There may be a more general way to do this:
+                    # https://github.com/nix-community/home-manager/issues/4199
+    };
+
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
     #   org.gradle.console=verbose
