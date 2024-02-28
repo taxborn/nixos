@@ -70,6 +70,7 @@
     extraGroups = [ "wheel" ];
     packages = with pkgs; [
       alacritty
+      fd
       google-chrome
       minecraft
       ripgrep
@@ -88,14 +89,20 @@
     feh
     gcc
     git
+    gh
+    # gnome.gnome-keyring # might be needed for protonvpn again
     jdk17
     llvmPackages_17.clang-unwrapped
     neofetch
     pavucontrol
+    rustup
     unzip
     vlc
     wget
+
     unstable.neovim
+    # unstable.protonvpn-gui # eventually switch to OpenVPN config or wireshark (or wireguard?)
+    # unstable.protonvpn-cli
     unstable.python312Full
     unstable.python312Packages.pip
   ];

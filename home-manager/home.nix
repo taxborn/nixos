@@ -17,6 +17,8 @@
       source = ../dotfiles/nvim;
       recursive = true;
     };
+    
+    ".background-image".source = ../dotfiles/wallpapers/lakeside.png;
 
     ".config/i3/config" = {
       source = ../dotfiles/i3/config;
