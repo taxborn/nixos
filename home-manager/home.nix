@@ -13,11 +13,11 @@
   ];
 
   home.file = {
-    ".config/nvim" = {
-      source = ../dotfiles/nvim;
-      recursive = true;
-    };
-    
+    # TODO: Figure out a good way to include the lazy-lock.json file
+    # to pin plugin versions. Right now since this symlinks to a RO
+    # file system, nvim doesn't like it.
+    ".config/nvim/init.lua".source = ../dotfiles/nvim/init.lua;
+
     ".background-image".source = ../dotfiles/wallpapers/lakeside.png;
 
     ".config/alacritty" = {

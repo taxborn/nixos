@@ -1,5 +1,5 @@
 {
-  description = "Nixos config flake";
+  description = "Braxton's NixOS configuration";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
@@ -26,6 +26,7 @@
     {
       nixosConfigurations = {
 	turing = nixpkgs.lib.nixosSystem {
+	  # TODO: Are there any hardware presets I want to include for my desktop?
 	  specialArgs = {inherit inputs unstable;};
 	  modules = [ 
 	    overlayModule
@@ -39,6 +40,8 @@
 	};
 
 	euclid = nixpkgs.lib.nixosSystem {
+	  # Include nixos-hardware here because it's a Dell XPS 15 9520, we can
+	  # load in some sensible defaults.
 	  specialArgs = {inherit inputs unstable nixos-hardware;};
 	  modules = [ 
 	    overlayModule
