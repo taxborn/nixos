@@ -14,6 +14,10 @@
 
   networking.hostName = "turing";
 
+  environment.interactiveShellInit = ''
+    alias rebuild="sudo nixos-rebuild switch --flake /home/taxborn/dev/code/nixos/#turing"
+  '';
+
   environment.systemPackages = with pkgs; [
     ntfs3g
   ];

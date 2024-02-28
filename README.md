@@ -8,6 +8,8 @@ sudo nixos-rebuild switch --flake .#<NAME>
 ```
 where **<NAME>** can be either `turing` (my desktop) or `euclid` (my laptop) in my setup.
 
+I've also set up an alias per-host of `rebuild` that can be executed anywhere in the system.
+
 ## Errors encountered
 Say I added a new file or directory, then rebuilt and got this:
 ```

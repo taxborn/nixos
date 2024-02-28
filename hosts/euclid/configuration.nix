@@ -14,6 +14,10 @@
 
   networking.hostName = "euclid";
 
+  environment.interactiveShellInit = ''
+    alias rebuild="sudo nixos-rebuild switch --flake /home/taxborn/dev/code/nixos/#euclid"
+  '';
+
   services.xserver.dpi = 261; # since I got a HiDPI display
   # TODO: why is the mouse so god damn tiny
 
