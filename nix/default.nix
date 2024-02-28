@@ -73,8 +73,6 @@
       alacritty
       google-chrome
       minecraft
-      neovim
-      python312
       ripgrep
       spotify
       tmux
@@ -95,6 +93,7 @@
     unzip
     vlc
     wget
+    unstable.neovim
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

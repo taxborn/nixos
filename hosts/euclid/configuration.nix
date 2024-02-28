@@ -15,6 +15,7 @@
   networking.hostName = "euclid";
 
   services.xserver.dpi = 261; # since I got a HiDPI display
+  # TODO: why is the mouse so god damn tiny
 
   environment.systemPackages = with pkgs; [
     brightnessctl
