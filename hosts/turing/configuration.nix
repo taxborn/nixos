@@ -9,7 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       # Include home manager
-      inputs.home-manager.nixosModules.default
+      # inputs.home-manager.nixosModules.default
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -112,13 +112,6 @@
     vlc
     wget
   ];
-
-  home-manager = {
-    extraSpecialArgs = { inherit inputs; };
-    users = {
-      taxborn = import ./home.nix;
-    };
-  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
