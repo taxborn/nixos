@@ -2,7 +2,11 @@
 ... and dotfiles!
 
 ## Installing
-I really don't know at the moment since running this on my laptop spews out a bunch of nonsense
+It's pretty easy once you `git pull`. `cd` into the directory and execute:
+```
+sudo nixos-rebuild switch --flake .#<NAME>
+```
+where **<NAME>** can be either `turing` (my desktop) or `euclid` (my laptop) in my setup.
 
 ## Errors encountered
 Say I added a new file or directory, then rebuilt and got this:
