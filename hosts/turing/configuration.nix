@@ -14,6 +14,8 @@
 
   networking.hostName = "turing";
 
+  # TODO: Auto mount /dev/sda1 to ~/data (for now - what's the convention now?)
+
   environment.interactiveShellInit = ''
     alias rebuild="sudo nixos-rebuild switch --flake /home/taxborn/dev/code/nixos/#turing"
   '';
