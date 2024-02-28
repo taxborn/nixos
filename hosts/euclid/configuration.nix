@@ -14,27 +14,10 @@
 
   networking.hostName = "euclid";
 
-  services.xserver.dpi = 180; # since I got a HiDPI display
+  services.xserver.dpi = 261; # since I got a HiDPI display
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
-    _1password-gui
-    alacritty
-    dmenu
-    feh
-    gcc
-    git
-    google-chrome
-    home-manager
-    i3
-    llvmPackages_17.clang-unwrapped
-    neofetch
-    neovim
-    pavucontrol
-    spotify
-    unzip
-    wget
+    brightnessctl
   ];
 }
 

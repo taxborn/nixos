@@ -14,23 +14,8 @@
 
   networking.hostName = "turing";
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
-    dmenu
-    feh
-    gcc
-    git
-    home-manager
-    i3 # maybe remove with i3-gaps installed?
-    jdk17
-    llvmPackages_17.clang-unwrapped
-    neofetch
     ntfs3g
-    pavucontrol
-    unzip
-    vlc
-    wget
   ];
 }
 
