@@ -94,6 +94,8 @@
     vlc
     wget
     unstable.neovim
+    unstable.python312Full
+    unstable.python312Packages.pip
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
