@@ -88,7 +88,6 @@
     feh
     gcc
     git
-    home-manager
     jdk17
     llvmPackages_17.clang-unwrapped
     neofetch
