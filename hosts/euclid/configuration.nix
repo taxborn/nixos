@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, inputs, ... }:
+{ config, lib, pkgs, inputs, nixos-hardware, ... }:
 
 {
   imports =
@@ -10,6 +10,8 @@
       ./hardware-configuration.nix
       # Include the default nix configuration
       ../../nix
+      nixos-hardware.nixosModules.dell-xps-15-9520-nvidia
+      nixos-hardware.nixosModules.common-hidpi
     ];
 
   networking.hostName = "euclid";

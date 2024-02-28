@@ -69,7 +69,6 @@
     isNormalUser = true;
     extraGroups = [ "wheel" ];
     packages = with pkgs; [
-      _1password-gui
       alacritty
       google-chrome
       minecraft
@@ -82,7 +81,10 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    _1password
+    _1password-gui
     dmenu
+    discord
     feh
     gcc
     git
@@ -97,6 +99,12 @@
     unstable.python312Full
     unstable.python312Packages.pip
   ];
+
+  programs._1password.enable = true;
+  programs._1password-gui = {
+    enable = true;
+    polkitPolicyOwners = [ "taxborn" ];
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

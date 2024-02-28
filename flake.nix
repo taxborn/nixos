@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
     unstable.url = "nixpkgs/nixos-unstable";
+    nixos-hardware.url = "github:nixos/nixos-hardware";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-23.11";
@@ -11,7 +12,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, unstable, ... }@inputs:
+  outputs = { self, nixpkgs, unstable, nixos-hardware, ... }@inputs:
     let
       overlay = final: prev: let
 	unstablePkgs = import unstable { inherit (prev) system; config.allowUnfree = true; };
@@ -38,7 +39,7 @@
 	};
 
 	euclid = nixpkgs.lib.nixosSystem {
-	  specialArgs = {inherit inputs unstable;};
+	  specialArgs = {inherit inputs unstable nixos-hardware;};
 	  modules = [ 
 	    overlayModule
 	    ./hosts/euclid/configuration.nix
