@@ -55,6 +55,8 @@
                     # https://github.com/nix-community/home-manager/issues/4199
     };
 
+    # ".gnupg/gpg-agent.conf".source = ../dotfiles/gnupg/gpg-agent.conf;
+
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
     #   org.gradle.console=verbose
@@ -79,6 +81,7 @@
   #
   home.sessionVariables = {
     EDITOR = "nvim";
+    # GPG_TTY = "/dev/pts/1"; # I really don't like this 
   };
 
   programs.git = {

@@ -8,7 +8,6 @@
   imports =
     [ # Include the results of the hardware scan.
       /etc/nixos/hardware-configuration.nix
-      inputs.home-manager.nixosModules.default
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -95,13 +94,6 @@
     unzip
     wget
   ];
-
-  home-manager = {
-    extraSpecialArgs = { inherit inputs; };
-    users = {
-      "taxborn" = import ./home.nix;
-    };
-  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

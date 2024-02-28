@@ -8,8 +8,6 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      # Include home manager
-      # inputs.home-manager.nixosModules.default
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -113,12 +111,18 @@
     wget
   ];
 
+  #environment.shellInit = ''
+  #  export GPG_TTY=$(tty)
+  #  gpg-connect-agent updatestartuptty /bye >/dev/null
+  #'';
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
+    pinentryFlavor = "tty";
   };
 
   # List services that you want to enable:

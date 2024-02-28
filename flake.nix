@@ -33,7 +33,11 @@
 	  specialArgs = {inherit inputs;};
 	  modules = [ 
 	    ./hosts/euclid/configuration.nix
-	    inputs.home-manager.nixosModules.default
+	    inputs.home-manager.nixosModules.home-manager {
+	      home-manager.users = {
+		taxborn = import ./home-manager/home.nix;
+	      };
+	    }
 	  ];
 	};
       };
