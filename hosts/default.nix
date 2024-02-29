@@ -1,6 +1,10 @@
 { config, lib, pkgs, inputs, ... }:
 
 {
+  imports = [
+    ../modules
+  ];
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -10,33 +14,6 @@
   time.timeZone = "America/Chicago";
 
   i18n.defaultLocale = "en_US.UTF-8";
-
-  # X11 configuration
-  services.xserver = {
-    # Enable the X11 windowing system.
-    enable = true;
-
-    windowManager.i3 = {
-      enable = true;
-      package = pkgs.i3-gaps; # Ensure i3 is i3-gaps
-    };
-
-    windowManager.dwm.enable = true;
-
-    # Enable touchpad support (enabled default in most desktopManager).
-    libinput.enable = true;
-
-    xkb.layout = "us";
-    # xkb.options = "eurosign:e,caps:escape";
-
-    desktopManager = {
-      xterm.enable = false;
-    };
-
-    displayManager = {
-      defaultSession = "none+i3";
-    };
-  };
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
@@ -110,6 +87,8 @@
     unstable.python312Packages.pip
   ];
 
+  programs.fish.enable = true;
+
   # Alias `rebuild` to rebuild the os
   environment.interactiveShellInit = ''
     alias rebuild="sudo nixos-rebuild switch --flake /home/taxborn/dev/code/nixos/#$(hostname)"
@@ -129,6 +108,7 @@
     enable = true;
     enableSSHSupport = true;
     pinentryFlavor = "tty";
+    settings.default-cache-ttl = 4 * 60 * 60; # 4 hours
   };
 
   programs.steam.enable = true;

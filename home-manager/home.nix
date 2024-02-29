@@ -49,7 +49,7 @@
     };
 
     # So HM can manage bash and include the session variables
-    bash.enable = true;
+    fish.enable = true;
 
     lazygit.enable = true;
 

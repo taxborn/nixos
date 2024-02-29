@@ -2,6 +2,7 @@ import = [
   "~/.config/alacritty/catppuccin-mocha.toml"
 ]
 
+# Not really needed honestly
 live_config_reload = true
 
 [scrolling]
@@ -13,3 +14,8 @@ bold = { family = "JetBrainsMono Nerd Font", style = "Extrabold" }
 italic = { family = "JetBrainsMono Nerd Font", style = "Semibold Italic" }
 bold_italic = { family = "JetBrainsMono Nerd Font", style = "Extrabold Italic" }
 size = 11
+
+
+[shell]
+program = "/home/taxborn/.nix-profile/bin/fish"
+args = ["--command=tmux"]
