@@ -74,7 +74,7 @@
       unstable.alacritty
       fd
       google-chrome
-      minecraft
+      prismlauncher
       ripgrep
       spotify
       tmux
@@ -90,10 +90,10 @@
     discord
     feh
     gcc
-    git
     gh
+    git
     # gnome.gnome-keyring # might be needed for protonvpn again
-    jdk17
+    jdk21
     llvmPackages_17.clang-unwrapped
     neofetch
     pavucontrol
@@ -113,6 +113,7 @@
   # Alias `rebuild` to rebuild the os
   environment.interactiveShellInit = ''
     alias rebuild="sudo nixos-rebuild switch --flake /home/taxborn/dev/code/nixos/#$(hostname)"
+    alias dl-repos="gh repo list taxborn --source --json nameWithOwner -q \".[].nameWithOwner\" | xargs -L1 gh repo clone"
   '';
 
   programs._1password.enable = true;

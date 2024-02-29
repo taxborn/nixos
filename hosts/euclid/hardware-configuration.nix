@@ -23,6 +23,11 @@
       fsType = "vfat";
     };
 
+  fileSystems."/home/taxborn/phoenix" =
+    { device = "/dev/disk/by-uuid/af98aedb-3bfe-4544-b344-6198d960daf6";
+      fsType = "ext4";
+    };
+
   swapDevices =
     [ { device = "/dev/disk/by-uuid/598eb465-7cef-4925-90cf-e8c56374dcce"; }
     ];
