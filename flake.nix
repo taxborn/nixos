@@ -7,6 +7,7 @@
 
     home-manager = {
       url = "github:nix-community/home-manager/release-23.11";
+      # We want home-manager to use the same set of nixpkgs as our system.
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

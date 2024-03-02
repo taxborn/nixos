@@ -18,6 +18,8 @@
     # file system, nvim doesn't like it.
     ".config/nvim/init.lua".source = ../dotfiles/nvim/init.lua;
 
+    ".config/tmux/tmux.conf".source = ../dotfiles/tmux/tmux.conf;
+
     ".background-image".source = ../dotfiles/wallpapers/lakeside.png;
 
     ".config/alacritty" = {

@@ -18,22 +18,6 @@
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
-  # allow unfree packages, eventually move this to the idea per-package setup
-  nixpkgs.config.allowUnfree = true;
-
-  nix = {
-    # nix flakes :)
-    settings.experimental-features = [ "nix-command" "flakes" ];
-
-    # have nix garbage collect every week
-    settings.auto-optimise-store = true;
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 7d";
-    };
-  };
-
   # Enable sound.
   sound.enable = true;
   hardware.pulseaudio.enable = true;
@@ -63,6 +47,7 @@
   environment.systemPackages = with pkgs; [
     _1password
     _1password-gui
+    arandr
     dmenu
     discord
     feh
