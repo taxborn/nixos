@@ -32,13 +32,14 @@
     isNormalUser = true;
     extraGroups = [ "wheel" ];
     packages = with pkgs; [
-      unstable.alacritty
       fd
       google-chrome
       prismlauncher
       ripgrep
       spotify
       tmux
+
+      unstable.alacritty
     ];
   };
 
@@ -78,6 +79,8 @@
   environment.interactiveShellInit = ''
     alias rebuild="sudo nixos-rebuild switch --flake /home/taxborn/dev/code/nixos/#$(hostname)"
     alias dl-repos="gh repo list taxborn --source --json nameWithOwner -q \".[].nameWithOwner\" | xargs -L1 gh repo clone"
+    alias vim="nvim"
+    alias vi="nvim"
   '';
 
   programs._1password.enable = true;

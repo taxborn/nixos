@@ -18,4 +18,3 @@ size = 11
 
 [shell]
 program = "/home/taxborn/.nix-profile/bin/fish"
-args = ["--command=tmux"]
