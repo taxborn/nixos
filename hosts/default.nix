@@ -6,12 +6,16 @@
   ];
 
   # Use the systemd-boot EFI boot loader.
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.systemd-boot.enable = false;
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "nodev";
-  boot.loader.grub.efiSupport = true;
-  boot.loader.grub.useOSProber = true;
+  boot.loader = {
+    efi.canTouchEfiVariables = true;
+
+    grub = {
+      enable = true;
+      device = "nodev";
+      efiSupport = true;
+      useOSProber = true;
+    };
+  };
 
   networking.networkmanager.enable = true;
 
@@ -81,7 +85,7 @@
   programs.fish.enable = true;
 
   # Alias `rebuild` to rebuild the os
-  environment.interactiveShellInit = ''
+  programs.fish.interactiveShellInit = ''
     alias rebuild="sudo nixos-rebuild switch --flake /home/taxborn/dev/code/nixos/#$(hostname)"
     alias dl-repos="gh repo list taxborn --source --json nameWithOwner -q \".[].nameWithOwner\" | xargs -L1 gh repo clone"
     alias vim="nvim"
