@@ -14,22 +14,17 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/e78bf6d1-5302-4c56-b5c1-a5912b0d56b9";
+    { device = "/dev/disk/by-uuid/10131655-665b-4205-8f19-2040a7a6022e";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/F9E8-B15A";
+    { device = "/dev/disk/by-uuid/5E99-AD05";
       fsType = "vfat";
     };
 
-  fileSystems."/home/taxborn/phoenix" =
-    { device = "/dev/disk/by-uuid/af98aedb-3bfe-4544-b344-6198d960daf6";
-      fsType = "ext4";
-    };
-
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/598eb465-7cef-4925-90cf-e8c56374dcce"; }
+    [ { device = "/dev/disk/by-uuid/eae8cc1e-d61b-4711-a498-3735c215074f"; }
     ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
