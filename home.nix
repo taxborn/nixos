@@ -33,12 +33,14 @@
     jdk21
     llvmPackages_17.clang-unwrapped
     neofetch
+    nodejs_21
     pavucontrol
     ripgrep
     rustup
     spotify
     st
     vlc
+    xclip
 
     unstable.alacritty
     unstable.neovim
@@ -111,17 +113,6 @@
         init.defaultBranch = "main";
       };
     };
-
-    # fish = {
-    #   enable = true;
-    #
-    #   shellAliases = {
-    #     rbld = "sudo nixos-rebuild switch --flake /home/taxborn/dev/code/nixos/#$(hostname)";
-    #     dl-repos = "gh repo list taxborn --source --json nameWithOwner -q \".[].nameWithOwner\" | xargs -L1 gh repo clone";
-    #     vim="nvim";
-    #     vi="nvim";
-    #   };
-    # };
 
     tmux.enable = true;
 

@@ -12,5 +12,7 @@
     ];
 
   networking.hostName = "turing";
+
+  # TODO: AMD Rocm installation
 }
 

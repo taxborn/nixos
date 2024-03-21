@@ -28,6 +28,8 @@
     };
   };
 
+  # TODO: CUDA installation
+
   environment.systemPackages = with pkgs; [
     brightnessctl
   ];
