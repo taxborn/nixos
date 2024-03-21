@@ -30,7 +30,7 @@
 	  inherit system;
 
 	  specialArgs = {inherit unstable;};
-	  modules = [ overlayModule ./configuration.nix ];
+	  modules = [ overlayModule ./hosts/turing/configuration.nix ];
 	};
       };
       homeConfigurations = {
