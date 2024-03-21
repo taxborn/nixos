@@ -96,6 +96,7 @@
     sqlite
     unzip
     wget
+    ntfs3g
   ];
 
   programs._1password.enable = true;

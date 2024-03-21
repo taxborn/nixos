@@ -12,9 +12,5 @@
     ];
 
   networking.hostName = "turing";
-
-  environment.systemPackages = with pkgs; [
-    ntfs3g
-  ];
 }
 
