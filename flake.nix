@@ -3,6 +3,7 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-23.11";
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixos-hardware.url = "github:nixos/nixos-hardware";
     home-manager = {
       url = "github:nix-community/home-manager/release-23.11";
       # We want home-manager to use the same set of nixpkgs as our system.
@@ -10,7 +11,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, unstable, home-manager, ... }:
+  outputs = { self, nixpkgs, unstable, home-manager, nixos-hardware, ... }:
     let
       # Allow the 'unstable' prefix for packages.
       overlay = final: prev: let
@@ -26,11 +27,19 @@
     in
     {
       nixosConfigurations = {
+	# Desktop configuration
 	turing = lib.nixosSystem {
 	  inherit system;
 
 	  specialArgs = {inherit unstable;};
 	  modules = [ overlayModule ./hosts/turing/configuration.nix ];
+	};
+	# Laptop configuration
+	euclid = lib.nixosSystem {
+	  inherit system;
+
+	  specialArgs = {inherit unstable nixos-hardware;};
+	  modules = [ overlayModule ./hosts/euclid/configuration.nix ];
 	};
       };
       homeConfigurations = {
