@@ -1,6 +1,11 @@
 { config, pkgs, ... }:
 
 {
+  # User-level module imports.
+  imports = [
+    ./modules/shell.nix
+  ];
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "taxborn";
@@ -107,16 +112,16 @@
       };
     };
 
-    fish = {
-      enable = true;
-
-      shellAliases = {
-        rbld = "sudo nixos-rebuild switch --flake /home/taxborn/dev/code/nixos/#$(hostname)";
-        dl-repos = "gh repo list taxborn --source --json nameWithOwner -q \".[].nameWithOwner\" | xargs -L1 gh repo clone";
-        vim="nvim";
-        vi="nvim";
-      };
-    };
+    # fish = {
+    #   enable = true;
+    #
+    #   shellAliases = {
+    #     rbld = "sudo nixos-rebuild switch --flake /home/taxborn/dev/code/nixos/#$(hostname)";
+    #     dl-repos = "gh repo list taxborn --source --json nameWithOwner -q \".[].nameWithOwner\" | xargs -L1 gh repo clone";
+    #     vim="nvim";
+    #     vi="nvim";
+    #   };
+    # };
 
     tmux.enable = true;
 
