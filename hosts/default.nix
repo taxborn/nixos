@@ -1,19 +1,10 @@
 { config, lib, pkgs, inputs, ... }:
 
 {
-  # Use the GRUB bootloader
-  boot.loader = {
-    efi.canTouchEfiVariables = true;
-
-    # This also enables dual-booting with Windows
-    # TODO: Timezone issues
-    grub = {
-      enable = true;
-      device = "nodev";
-      efiSupport = true;
-      useOSProber = true;
-    };
-  };
+  # System-level imports
+  imports = [
+    ../modules/boot.nix
+  ];
 
   # Set the default shell to Fish
   environment.shells = with pkgs; [ fish ];
