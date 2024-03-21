@@ -78,6 +78,11 @@
 
       signing.key = "CA973F0FD0F2AF3A";
       signing.signByDefault = true;
+
+      extraConfig = {
+        push.autoSetupRemote = true;
+        init.defaultBranch = "main";
+      };
     };
 
     fish = {
