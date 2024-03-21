@@ -37,7 +37,8 @@
 	taxborn = home-manager.lib.homeManagerConfiguration {
 	  inherit pkgs;
 
-	  modules = [ ./home.nix ];
+	  extraSpecialArgs = {inherit unstable;};
+	  modules = [ overlayModule ./home.nix ];
 	};
       };
     };

@@ -17,13 +17,35 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    pkgs.hello
+  home.packages = with pkgs; [
+    arandr
+    discord
+    fd
+    feh
+    gcc
+    gh
+    google-chrome
+    jdk21
+    llvmPackages_17.clang-unwrapped
+    neofetch
+    pavucontrol
+    ripgrep
+    rustup
+    spotify
+    st
+    vlc
 
-    (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    unstable.alacritty
+    unstable.neovim
+    # unstable.protonvpn-gui # eventually switch to OpenVPN config or wireshark (or wireguard?)
+    # unstable.protonvpn-cli
+    unstable.python312Full
+    unstable.python312Packages.pip
+
+    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
+
+  nixpkgs.config.allowUnfree = true;
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -95,6 +117,8 @@
         vi="nvim";
       };
     };
+
+    tmux.enable = true;
 
     # Let Home Manager install and manage itself.
     home-manager.enable = true;

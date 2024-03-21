@@ -52,16 +52,7 @@
   users.users.taxborn = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
-    packages = with pkgs; [
-      fd
-      google-chrome
-      prismlauncher
-      ripgrep
-      spotify
-      tmux
-
-      unstable.alacritty
-    ];
+    packages = with pkgs; [ ];
   };
 
     # allow unfree packages, eventually move this to the idea per-package setup
@@ -113,30 +104,12 @@
   };
 
   environment.systemPackages = with pkgs; [
-    arandr
     dmenu
-    discord
-    feh
-    gcc
-    gh
-    jdk21
-    llvmPackages_17.clang-unwrapped
-    neofetch
-    pavucontrol
-    rustup
-    st
     sqlite
     unzip
-    vlc
     wget
 
     ntfs3g
-
-    unstable.neovim
-    # unstable.protonvpn-gui # eventually switch to OpenVPN config or wireshark (or wireguard?)
-    # unstable.protonvpn-cli
-    unstable.python312Full
-    unstable.python312Packages.pip
   ];
 
   programs._1password.enable = true;
