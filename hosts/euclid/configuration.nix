@@ -8,8 +8,8 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      # Include the default nix configuration
       ../default.nix
+      # NixOS hardware configurations
       nixos-hardware.nixosModules.dell-xps-15-9520-nvidia
       nixos-hardware.nixosModules.common-hidpi
     ];
@@ -40,4 +40,3 @@
   services.upower.enable = true;
   services.tlp.enable = true;
 }
-

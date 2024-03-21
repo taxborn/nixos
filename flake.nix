@@ -1,10 +1,9 @@
 { description = "Braxton's NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs.url = "nixpkgs/nixos-23.11";
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:nixos/nixos-hardware";
-
     home-manager = {
       url = "github:nix-community/home-manager/release-23.11";
       # We want home-manager to use the same set of nixpkgs as our system.
@@ -12,46 +11,43 @@
     };
   };
 
-  outputs = { self, nixpkgs, unstable, nixos-hardware, ... }@inputs:
+  outputs = { self, nixpkgs, unstable, home-manager, nixos-hardware, ... }:
     let
+      # Allow the 'unstable' prefix for packages.
       overlay = final: prev: let
 	unstablePkgs = import unstable { inherit (prev) system; config.allowUnfree = true; };
       in {
 	unstable = unstablePkgs;
       };
+
       overlayModule = ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay ]; });
+      lib = nixpkgs.lib;
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
     in
     {
       nixosConfigurations = {
-	turing = nixpkgs.lib.nixosSystem {
-	  # TODO: Are there any hardware presets I want to include for my desktop?
-	  specialArgs = {inherit inputs unstable;};
-	  modules = [ 
-	    overlayModule
-	    ./hosts/turing/configuration.nix
-	    inputs.home-manager.nixosModules.home-manager {
-	      home-manager.users = {
-		taxborn = import ./home-manager/home.nix;
-	      };
-	    }
-	  ];
-	};
+	# Desktop configuration
+	turing = lib.nixosSystem {
+	  inherit system;
 
-	euclid = nixpkgs.lib.nixosSystem {
-	  # Include nixos-hardware here because it's a Dell XPS 15 9520, we can
-	  # load in some sensible defaults.
-	  specialArgs = {inherit inputs unstable nixos-hardware;};
-	  modules = [ 
-	    overlayModule
-	    ./hosts/euclid/configuration.nix
-	    inputs.home-manager.nixosModules.home-manager {
-	      home-manager.users = {
-		taxborn = import ./home-manager/home.nix;
-	      };
-	    }
-	  ];
+	  specialArgs = {inherit unstable;};
+	  modules = [ overlayModule ./hosts/turing/configuration.nix ];
+	};
+	# Laptop configuration
+	euclid = lib.nixosSystem {
+	  inherit system;
+
+	  specialArgs = {inherit unstable nixos-hardware;};
+	  modules = [ overlayModule ./hosts/euclid/configuration.nix ];
+	};
+      };
+      homeConfigurations = {
+	taxborn = home-manager.lib.homeManagerConfiguration {
+	  inherit pkgs;
+
+	  extraSpecialArgs = {inherit unstable;};
+	  modules = [ overlayModule ./home.nix ];
 	};
       };
     };

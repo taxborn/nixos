@@ -23,6 +23,16 @@
       fsType = "vfat";
     };
 
+  fileSystems."/home/taxborn/Data" =
+    { device = "/dev/disk/by-label/Data";
+      fsType = "ntfs";
+    };
+
+  fileSystems."/home/taxborn/Windows" =
+    { device = "/dev/disk/by-uuid/B89C62F39C62AC16";
+      fsType = "ntfs";
+    };
+
   swapDevices =
     [ { device = "/dev/disk/by-uuid/ac811dd0-8628-419e-82f7-db669dfa75fc"; }
     ];

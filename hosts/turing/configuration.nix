@@ -8,16 +8,9 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      # Include the default nix configuration
       ../default.nix
     ];
 
   networking.hostName = "turing";
-
-  # TODO: Auto mount /dev/sda1 to ~/data (for now - what's the convention now?)
-
-  environment.systemPackages = with pkgs; [
-    ntfs3g
-  ];
 }
 

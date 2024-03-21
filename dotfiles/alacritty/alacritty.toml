@@ -15,6 +15,5 @@ italic = { family = "JetBrainsMono Nerd Font", style = "Semibold Italic" }
 bold_italic = { family = "JetBrainsMono Nerd Font", style = "Extrabold Italic" }
 size = 11
 
-
-[shell]
-program = "/home/taxborn/.nix-profile/bin/fish"
+# [shell]
+# program = "/home/taxborn/.nix-profile/bin/fish"
