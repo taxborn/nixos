@@ -40,7 +40,9 @@
     spotify
     st
     vlc
+    vscode
     xclip
+    zig
 
     unstable.alacritty
     unstable.neovim

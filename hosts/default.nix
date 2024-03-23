@@ -6,6 +6,7 @@
     ../modules/boot.nix
     ../modules/nixos.nix
     ../modules/xorg.nix
+    ../modules/docker.nix
   ];
 
   # Set the default shell to Fish
