@@ -5,11 +5,10 @@
 { config, lib, pkgs, inputs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ../default.nix
-    ];
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ../default.nix
+  ];
 
   networking.hostName = "turing";
 

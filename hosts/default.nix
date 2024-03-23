@@ -40,13 +40,7 @@
     packages = with pkgs; [ ];
   };
 
-  environment.systemPackages = with pkgs; [
-    dmenu
-    sqlite
-    unzip
-    wget
-    ntfs3g
-  ];
+  environment.systemPackages = with pkgs; [ dmenu sqlite unzip wget ntfs3g ];
 
   programs._1password.enable = true;
   programs._1password-gui = {

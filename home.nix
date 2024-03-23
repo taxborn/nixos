@@ -2,9 +2,7 @@
 
 {
   # User-level module imports.
-  imports = [
-    ./modules/shell.nix
-  ];
+  imports = [ ./modules/shell.nix ];
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -78,7 +76,7 @@
     ".config/i3/config" = {
       source = ./dotfiles/i3/config;
       force = true; # There may be a more general way to do this:
-                    # https://github.com/nix-community/home-manager/issues/4199
+      # https://github.com/nix-community/home-manager/issues/4199
     };
   };
 
@@ -93,9 +91,7 @@
   #
   #  /etc/profiles/per-user/taxborn/etc/profile.d/hm-session-vars.sh
   #
-  home.sessionVariables = {
-    EDITOR = "nvim";
-  };
+  home.sessionVariables = { EDITOR = "nvim"; };
 
   programs = {
     lazygit.enable = true;

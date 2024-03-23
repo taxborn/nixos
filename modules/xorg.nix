@@ -23,9 +23,7 @@
     xkb.layout = "us";
     # xkb.options = "eurosign:e,caps:escape";
 
-    desktopManager = {
-      xterm.enable = false;
-    };
+    desktopManager = { xterm.enable = false; };
 
     displayManager = {
       defaultSession = "none+i3";

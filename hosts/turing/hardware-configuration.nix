@@ -4,38 +4,36 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
+  boot.initrd.availableKernelModules =
+    [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/27043061-ecc5-40ce-8fbc-682c264c2ef1";
-      fsType = "ext4";
-    };
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/27043061-ecc5-40ce-8fbc-682c264c2ef1";
+    fsType = "ext4";
+  };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/0518-30FA";
-      fsType = "vfat";
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/0518-30FA";
+    fsType = "vfat";
+  };
 
-  fileSystems."/home/taxborn/Data" =
-    { device = "/dev/disk/by-label/Data";
-      fsType = "ntfs";
-    };
+  fileSystems."/home/taxborn/Data" = {
+    device = "/dev/disk/by-label/Data";
+    fsType = "ntfs";
+  };
 
-  fileSystems."/home/taxborn/Windows" =
-    { device = "/dev/disk/by-uuid/B89C62F39C62AC16";
-      fsType = "ntfs";
-    };
+  fileSystems."/home/taxborn/Windows" = {
+    device = "/dev/disk/by-uuid/B89C62F39C62AC16";
+    fsType = "ntfs";
+  };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/ac811dd0-8628-419e-82f7-db669dfa75fc"; }
-    ];
+    [{ device = "/dev/disk/by-uuid/ac811dd0-8628-419e-82f7-db669dfa75fc"; }];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
@@ -46,5 +44,6 @@
   # networking.interfaces.wlo1.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.intel.updateMicrocode =
+    lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

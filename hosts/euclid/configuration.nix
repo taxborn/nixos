@@ -5,14 +5,13 @@
 { config, lib, pkgs, inputs, nixos-hardware, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ../default.nix
-      # NixOS hardware configurations
-      nixos-hardware.nixosModules.dell-xps-15-9520-nvidia
-      nixos-hardware.nixosModules.common-hidpi
-    ];
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ../default.nix
+    # NixOS hardware configurations
+    nixos-hardware.nixosModules.dell-xps-15-9520-nvidia
+    nixos-hardware.nixosModules.common-hidpi
+  ];
 
   networking.hostName = "euclid";
 
@@ -30,9 +29,7 @@
 
   # TODO: CUDA installation
 
-  environment.systemPackages = with pkgs; [
-    brightnessctl
-  ];
+  environment.systemPackages = with pkgs; [ brightnessctl ];
 
   powerManagement.enable = true;
   powerManagement.cpuFreqGovernor = null; # will be managed by tlp
