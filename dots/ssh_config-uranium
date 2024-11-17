@@ -1,5 +1,5 @@
-Host uranium
-	Hostname 10.0.0.2
+Host tungsten
+	Hostname 10.0.0.4
 	User taxborn
 
 Host h01

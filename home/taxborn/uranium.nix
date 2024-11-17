@@ -20,6 +20,13 @@
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
 
+  home.file = {
+    ".ssh/config" = {
+      source = ../../dots/ssh_config-uranium;
+      force = true;
+    };
+  };
+
   programs = {
     keychain = {
       enable = true;

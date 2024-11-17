@@ -16,6 +16,7 @@
     alacritty
     google-chrome 
     dmenu
+    obsidian
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
 
