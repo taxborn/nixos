@@ -9,11 +9,15 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    
+    # Hardware Configuration
+    nixos-hardware.url = "github:nixos/nixos-hardware";
   };
 
-  outputs = { self, home-manager, nixpkgs, ... }@inputs:
+  outputs = { self, home-manager, nixpkgs, nixos-hardware, ... } @ inputs:
     let
       inherit (self) outputs;
       # TODO: evaluate which systems I need
@@ -40,7 +44,10 @@
 
         tungsten = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };
-          modules = [ ./hosts/tungsten ];
+          modules = [ 
+	    ./hosts/tungsten 
+	    nixos-hardware.nixosModules.dell-xps-15-9520
+	  ];
         };
 
         helium-01 = nixpkgs.lib.nixosSystem {

@@ -7,6 +7,7 @@
       ./hardware-configuration.nix
     ];
   
+  # since the home partition is unlocked with a seperate key, we need to edit the `/etc/crypttab` to let LUKS know to unlock it.
   environment.etc.crypttab = {
     mode = "0600";
     text = ''
