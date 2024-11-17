@@ -21,7 +21,7 @@
       enable = true;
       enableZshIntegration = true;
       agents = [ "ssh" "gpg" ];
-      keys = [ "${config.networking.hostName}" "9BC40CD3E8BA5EF2" ];
+      keys = [ "helium" "9BC40CD3E8BA5EF2" ];
       extraFlags = [ "--nogui" "--quiet" ];
     };
   };
