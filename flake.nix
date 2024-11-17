@@ -42,6 +42,16 @@
           specialArgs = { inherit inputs outputs; };
           modules = [ ./hosts/tungsten ];
         };
+
+        helium-01 = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs outputs; };
+          modules = [ ./hosts/helium-01 ];
+        };
+
+        helium-02 = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs outputs; };
+          modules = [ ./hosts/helium-02 ];
+        };
       };
 
       homeConfigurations = {
@@ -55,6 +65,18 @@
           pkgs = nixpkgs.legacyPackages."x86_64-linux";
           extraSpecialArgs = { inherit inputs outputs; };
           modules = [ ./home/taxborn/tungsten.nix ];
+        };
+
+        "taxborn@helium-01" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages."x86_64-linux";
+          extraSpecialArgs = { inherit inputs outputs; };
+          modules = [ ./home/taxborn/helium.nix ];
+        };
+
+        "taxborn@helium-02" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages."x86_64-linux";
+          extraSpecialArgs = { inherit inputs outputs; };
+          modules = [ ./home/taxborn/helium.nix ];
         };
       };
     };
