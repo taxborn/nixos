@@ -19,7 +19,6 @@
 
   # packages I want installed on ALL systems
   environment.systemPackages = with pkgs; [
-    git
     wget
     neovim
   ];

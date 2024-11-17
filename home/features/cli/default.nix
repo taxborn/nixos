@@ -19,6 +19,10 @@
 
     # TODO: configure
     bat.enable = true;
+
+    ranger = {
+      enable = true;
+    };
   };
 
   home.packages = with pkgs; [
