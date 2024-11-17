@@ -15,6 +15,7 @@
   home.packages = with pkgs; [
     alacritty
     google-chrome 
+    obsidian
     dmenu
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
