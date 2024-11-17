@@ -37,6 +37,11 @@
           specialArgs = { inherit inputs outputs; };
           modules = [ ./hosts/uranium ];
         };
+
+        tungsten = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs outputs; };
+          modules = [ ./hosts/tungsten ];
+        };
       };
 
       homeConfigurations = {
@@ -44,6 +49,12 @@
           pkgs = nixpkgs.legacyPackages."x86_64-linux";
           extraSpecialArgs = { inherit inputs outputs; };
           modules = [ ./home/taxborn/uranium.nix ];
+        };
+
+        "taxborn@tungsten" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages."x86_64-linux";
+          extraSpecialArgs = { inherit inputs outputs; };
+          modules = [ ./home/taxborn/tungsten.nix ];
         };
       };
     };
