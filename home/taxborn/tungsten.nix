@@ -14,10 +14,11 @@
   # taxborn packages only on uranium
   home.packages = with pkgs; [
     alacritty
-    google-chrome 
+    brightnessctl
     dmenu
-    obsidian
+    google-chrome 
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    obsidian
   ];
 
   home.file = {
