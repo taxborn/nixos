@@ -1,25 +1,10 @@
-{ config, pkgs, ... }: { 
-  imports = [ 
-    ./home.nix
-    ../common
-    ../features/cli
-  ];
+{ pkgs, ... }:
 
-  features = {
-    cli = {
-      zsh.enable = true;
-    };
-  };
+{
+  imports = [ ../common/desktop.nix ];
 
   # taxborn packages only on uranium
-  home.packages = with pkgs; [
-    alacritty
-    brightnessctl
-    dmenu
-    google-chrome 
-    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-    obsidian
-  ];
+  home.packages = with pkgs; [ brightnessctl ];
 
   home.file = {
     ".ssh/config" = {
@@ -28,17 +13,8 @@
     };
   };
 
-  programs = {
-    keychain = {
-      enable = true;
-      enableZshIntegration = true;
-      agents = [ "ssh" "gpg" ];
-      keys = [ "tungsten" "9BC40CD3E8BA5EF2" ];
-      extraFlags = [ "--nogui" "--quiet" ];
-    };
-
-    vscode = {
-      enable = true;
-    };
-  };
+  programs.keychain.keys = [
+    "tungsten"
+    "9BC40CD3E8BA5EF2"
+  ];
 }

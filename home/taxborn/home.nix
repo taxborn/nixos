@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   home.username = lib.mkDefault "taxborn";
@@ -12,8 +17,8 @@
   # If you are looking for my dotfiles, most are at https://github.com/taxborn/dotfiles
   home.file = {
     ".gnupg/gpg-agent.conf".text = ''
-      default-cache-ttl 84000
-      max-cache-ttl 84000
+      default-cache-ttl 86400
+      max-cache-ttl 86400
     '';
   };
 
@@ -46,8 +51,14 @@
     keychain = {
       enable = true;
       enableZshIntegration = true;
-      agents = [ "ssh" "gpg" ];
-      extraFlags = [ "--nogui" "--quiet" ];
+      agents = [
+        "ssh"
+        "gpg"
+      ];
+      extraFlags = [
+        "--nogui"
+        "--quiet"
+      ];
     };
 
     home-manager.enable = true;

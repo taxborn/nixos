@@ -3,12 +3,19 @@
   pkgs,
   inputs,
   ...
-}: {
+}:
+
+{
   users.users.taxborn = {
     isNormalUser = true;
     description = "Braxton Fair";
     packages = [ inputs.home-manager.packages.${pkgs.system}.default ];
-    extraGroups = [ "wheel" "networkmanager" "audio" "video" ];
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+      "audio"
+      "video"
+    ];
 
     initialHashedPassword = "$y$j9T$sfTsI6QwCtxiJbDQP2XnY/$L.bFrSjEG/Hj3lTz7JZv6by/iYH.b87FaV.FIwfj1K6";
     # we want tungsten and uranium to be able to ssh into devices

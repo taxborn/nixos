@@ -2,7 +2,10 @@
 { pkgs, ... }:
 
 {
-  imports = [ ./zsh.nix ./tmux.nix ];
+  imports = [
+    ./zsh.nix
+    ./tmux.nix
+  ];
 
   programs = {
     zoxide = {
@@ -12,9 +15,14 @@
 
     eza = {
       enable = true;
-      enableZshIntegration = true;
       enableBashIntegration = true;
-      extraOptions = [ "-l" "--icons" "--git" "-a" ];
+      enableZshIntegration = true;
+      extraOptions = [
+        "-l"
+        "--icons"
+        "--git"
+        "-a"
+      ];
     };
 
     # TODO: configure
@@ -22,9 +30,7 @@
 
     ranger = {
       enable = true;
-      settings = {
-        line_numbers = "relative";
-      };
+      settings.line_numbers = "relative";
     };
   };
 

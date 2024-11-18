@@ -1,5 +1,7 @@
-{ config, pkgs, ... }: { 
-  imports = [ 
+{ pkgs, ... }:
+
+{
+  imports = [
     ./home.nix
     ../common
     ../features/cli
@@ -12,7 +14,10 @@
   };
 
   # taxborn packages only on the nucs
-  home.packages = with pkgs; [ ];
+  # home.packages = with pkgs; [ ];
 
-  programs.keychain.keys = [ "helium" "9BC40CD3E8BA5EF2" ];
+  programs.keychain.keys = [
+    "helium"
+    "9BC40CD3E8BA5EF2"
+  ];
 }

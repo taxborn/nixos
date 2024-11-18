@@ -1,3 +1,1 @@
-{
-  imports = [ ./taxborn.nix ];
-}
+{ imports = [ ./taxborn.nix ]; }

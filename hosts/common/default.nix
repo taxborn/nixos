@@ -1,6 +1,13 @@
 # Common configuration for all hosts
+{
+  lib,
+  inputs,
+  outputs,
+  pkgs,
+  ...
+}:
 
-{ lib, inputs, outputs, pkgs, ... }: {
+{
   imports = [
     ./users
     inputs.home-manager.nixosModules.home-manager
@@ -13,14 +20,12 @@
   # networking
   networking.networkmanager.enable = true;
   networking.firewall.enable = false;
-  
+
   time.timeZone = "America/Chicago";
   i18n.defaultLocale = "en_US.UTF-8";
 
   # packages I want installed on ALL systems
-  environment.systemPackages = with pkgs; [
-    wget
-  ];
+  environment.systemPackages = with pkgs; [ wget ];
 
   users.defaultUserShell = pkgs.zsh;
 
@@ -29,6 +34,8 @@
     enable = true;
     enableSSHSupport = true;
   };
+
+  programs.zsh.enable = true;
 
   services.openssh = {
     enable = true;
@@ -76,8 +83,9 @@
       options = "--delete-older-than 30d";
     };
     optimise.automatic = true;
-    registry = (lib.mapAttrs (_: flake: { inherit flake; }))
-      ((lib.filterAttrs (_: lib.isType "flake")) inputs);
+    registry = (lib.mapAttrs (_: flake: { inherit flake; })) (
+      (lib.filterAttrs (_: lib.isType "flake")) inputs
+    );
     # TODO: what is this
     # nixPath = [ "/etc/nix/path" ];
   };
@@ -85,6 +93,8 @@
   # home manager
   home-manager = {
     useUserPackages = true;
-    extraSpecialArgs = { inherit inputs outputs; };
+    extraSpecialArgs = {
+      inherit inputs outputs;
+    };
   };
 }

@@ -1,11 +1,10 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-    ];
-  
+  imports = [ ./hardware-configuration.nix ];
+
+  networking.hostName = "tungsten";
+
   # since the home partition is unlocked with a seperate key, we need to edit the `/etc/crypttab` to let LUKS know to unlock it.
   environment.etc.crypttab = {
     mode = "0600";
@@ -14,28 +13,11 @@
     '';
   };
 
-  networking.hostName = "tungsten";
-
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-  services.xserver.windowManager.dwm.enable = true;
-
-  # Enable sound.
-  hardware.pulseaudio.enable = true;
-  # TODO: pipewire
-  # services.pipewire = {
-  #   enable = true;
-  #   pulse.enable = true;
-  # };
-
-  # Enable touchpad support (enabled default in most desktopManager).
+  # Enable touchpad support
   services.libinput.enable = true;
 
   # tungsten-exclusive system packages
   # environment.systemPackages = with pkgs; [ ];
 
-  programs.zsh.enable = true;
-
   system.stateVersion = "24.05"; # Don't update
 }
-

@@ -1,0 +1,2 @@
+# server-exclusive system configuration
+{ }

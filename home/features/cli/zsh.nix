@@ -1,10 +1,10 @@
-{
-  config,
-  lib,
-  ...
-}: with lib; let
+{ config, lib, ... }:
+
+with lib;
+let
   cfg = config.features.cli.zsh;
-in {
+in
+{
   options.features.cli.zsh.enable = mkEnableOption "enable extended zsh configuration";
 
   config = mkIf cfg.enable {
@@ -18,7 +18,7 @@ in {
       };
       oh-my-zsh = {
         enable = true;
-	      theme = "lukerandall";
+        theme = "lukerandall";
       };
     };
   };
