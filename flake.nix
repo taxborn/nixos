@@ -45,9 +45,9 @@
         tungsten = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };
           modules = [ 
-	    ./hosts/tungsten 
-	    nixos-hardware.nixosModules.dell-xps-15-9520
-	  ];
+            ./hosts/tungsten 
+            nixos-hardware.nixosModules.dell-xps-15-9520
+          ];
         };
 
         helium-01 = nixpkgs.lib.nixosSystem {

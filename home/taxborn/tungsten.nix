@@ -36,5 +36,9 @@
       keys = [ "tungsten" "9BC40CD3E8BA5EF2" ];
       extraFlags = [ "--nogui" "--quiet" ];
     };
+
+    vscode = {
+      enable = true;
+    };
   };
 }

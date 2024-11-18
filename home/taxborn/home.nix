@@ -4,7 +4,7 @@
   home.username = lib.mkDefault "taxborn";
   home.homeDirectory = lib.mkDefault "/home/${config.home.username}";
 
-  home.stateVersion = "24.05"; # Please read the comment before changing.
+  home.stateVersion = "24.05";
 
   # taxborn packages I want everywhere
   # home.packages = with pkgs; [ ];
@@ -22,6 +22,14 @@
   };
 
   programs = {
+    neovim = {
+      enable = true;
+      defaultEditor = true;
+
+      viAlias = true;
+      vimAlias = true;
+    };
+
     git = {
       enable = true;
       userEmail = "hello@taxborn.com";
@@ -33,6 +41,13 @@
       extraConfig = {
         init.defaultBranch = "main";
       };
+    };
+
+    keychain = {
+      enable = true;
+      enableZshIntegration = true;
+      agents = [ "ssh" "gpg" ];
+      extraFlags = [ "--nogui" "--quiet" ];
     };
 
     home-manager.enable = true;

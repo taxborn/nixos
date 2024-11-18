@@ -12,9 +12,7 @@
   };
 
   # taxborn packages only on the nucs
-  home.packages = with pkgs; [
-    cowsay
-  ];
+  home.packages = with pkgs; [ ];
 
   programs = {
     keychain = {

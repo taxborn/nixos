@@ -15,17 +15,17 @@ in {
         eval $(ssh-agent -s) > /dev/null
       '';
       envExtra = ''
-	export GPG_TTY=$(tty)
+        export GPG_TTY=$(tty)
       '';
       shellAliases = {
-	ls = "eza";
-	grep = "rg";
-	ps = "procs";
-	rb = "sudo nixos-rebuild switch --flake ~/dev/projects/nixos";
+        ls = "eza";
+        grep = "rg";
+        ps = "procs";
+        rb = "sudo nixos-rebuild switch --flake ~/dev/projects/nixos";
       };
       oh-my-zsh = {
         enable = true;
-	theme = "lukerandall";
+	      theme = "lukerandall";
       };
     };
   };
