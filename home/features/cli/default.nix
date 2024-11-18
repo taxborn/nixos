@@ -31,10 +31,13 @@
   home.packages = with pkgs; [
     coreutils # needed?
     fd
+    fzf
+    fzf-zsh
     htop
     jq
     ripgrep
     tldr
+    xsel
     zip
   ];
 }
