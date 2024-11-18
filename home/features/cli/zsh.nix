@@ -10,13 +10,6 @@ in {
   config = mkIf cfg.enable {
     programs.zsh = {
       enable = true;
-      # TODO: are these next two needed with keychain?
-      initExtra = ''
-        eval $(ssh-agent -s) > /dev/null
-      '';
-      envExtra = ''
-        export GPG_TTY=$(tty)
-      '';
       shellAliases = {
         ls = "eza";
         grep = "rg";

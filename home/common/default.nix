@@ -5,17 +5,7 @@
       # Add overlays your own flake exports (from overlays and pkgs dir):
       outputs.overlays.additions
       outputs.overlays.modifications
-      outputs.overlays.stable-packages
-
-      # You can also add overlays exported from other flakes:
-      # neovim-nightly-overlay.overlays.default
-
-      # Or define it inline, for example:
-      # (final: prev: {
-      #   hi = final.hello.overrideAttrs (oldAttrs: {
-      #     patches = [ ./change-hello-to-hi.patch ];
-      #   });
-      # })
+      outputs.overlays.unstable-packages
     ];
     # Configure your nixpkgs instance
     config = {
@@ -30,8 +20,7 @@
     package = lib.mkDefault pkgs.nix;
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
-      # TODO: what is this
-      # warn-dirty = false;
+      warn-dirty = false;
     };
   };
 }

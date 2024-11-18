@@ -1,7 +1,6 @@
 { config, lib, pkgs, ... }:
 
 {
-  # TODO: nixos-hardware
   imports =
     [
       ./hardware-configuration.nix

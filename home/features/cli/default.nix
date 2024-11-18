@@ -2,7 +2,7 @@
 { pkgs, ... }:
 
 {
-  imports = [ ./zsh.nix ];
+  imports = [ ./zsh.nix ./tmux.nix ];
 
   programs = {
     zoxide = {
@@ -14,7 +14,7 @@
       enable = true;
       enableZshIntegration = true;
       enableBashIntegration = true;
-      extraOptions = [ "-l" "--git" "-a" ]; # TODO: "--icons" when nerd font installed
+      extraOptions = [ "-l" "--icons" "--git" "-a" ];
     };
 
     # TODO: configure
@@ -22,10 +22,9 @@
 
     ranger = {
       enable = true;
-    };
-
-    tmux = {
-      enable = true;
+      settings = {
+        line_numbers = "relative";
+      };
     };
   };
 
