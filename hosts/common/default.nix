@@ -44,8 +44,6 @@
     settings.UsePAM = true;
   };
 
-  services.vscode-server.enable = true;
-
   # nix
   nixpkgs = {
     # You can add overlays here
