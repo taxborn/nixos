@@ -11,8 +11,8 @@
     dwm = prev.dwm.overrideAttrs (oldAttrs: rec {
       src = inputs.nixpkgs.legacyPackages."x86_64-linux".fetchgit {
         url = "https://github.com/taxborn/dwm";
-        rev = "b0b5d3c85801d86d9ef29873a86c475fd8f4a41e";
-        hash = "sha256-YQ/eGR45xHISO3E7/ElOUnmHQ7INylS9VAll6fdUSxQ=";
+        rev = "2d8deb3939655ee9bde0266b2aa0ea4af7aff9da";
+        hash = "sha256-9aJdQnkuwzFL+fBZZp2+02YO7jT6C/Q7rurOxph5yz8=";
       };
     });
   };
