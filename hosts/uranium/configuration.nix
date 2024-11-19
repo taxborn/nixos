@@ -1,8 +1,8 @@
 /*
-Uranium configuration. This is my desktop PC.
+  Uranium configuration. This is my desktop PC.
 
-CPU: Intel i7-13700K
-GPU: XFX Speedster MERC310 AMD RX 7900 XT
+  CPU: Intel i7-13700K
+  GPU: XFX Speedster MERC310 AMD RX 7900 XT
 */
 {
   config,
@@ -18,10 +18,11 @@ GPU: XFX Speedster MERC310 AMD RX 7900 XT
 
   # AMDGPU-related chanegs
   services.xserver.videoDrivers = [ "amdgpu" ];
-  # hardware.graphics.enable32Bit = true; # For 32 bit applications, updated way
   systemd.tmpfiles.rules = [ "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}" ];
   hardware.opengl = {
     driSupport32Bit = true; # For 32 bit applications, deprecated
+    # hardware.graphics.enable32Bit = true; # For 32 bit applications, updated way
+
     extraPackages = with pkgs; [
       amdvlk
       rocmPackages.clr.icd

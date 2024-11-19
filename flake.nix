@@ -52,7 +52,7 @@
           specialArgs = {
             inherit inputs outputs;
           };
-          modules = [ 
+          modules = [
             vscode-server.nixosModules.default
             ./hosts/uranium
           ];

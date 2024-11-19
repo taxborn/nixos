@@ -1,8 +1,8 @@
 /*
-Tungsten, my Dell XPS 15 9520
+  Tungsten, my Dell XPS 15 9520
 
-CPU: Intel i9-12900HK
-GPU: GeForce RTX 3050 Ti
+  CPU: Intel i9-12900HK
+  GPU: GeForce RTX 3050 Ti
 */
 { pkgs, ... }:
 

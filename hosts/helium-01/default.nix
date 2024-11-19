@@ -1,7 +1,8 @@
 {
   imports = [
     ../common
-    ./configuration.nix
     ../common/server.nix
+    ./configuration.nix
+    ./hardware-configuration.nix
   ];
 }

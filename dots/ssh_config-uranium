@@ -9,3 +9,7 @@ Host h01
 Host h02
         Hostname 10.0.0.6
 	User taxborn
+
+Host neon
+	Hostname 15.204.234.44
+	User ubuntu

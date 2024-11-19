@@ -1,8 +1,6 @@
 { pkgs, ... }:
 
 {
-  imports = [ ./hardware-configuration.nix ];
-
   networking.hostName = "helium-01"; # Define your hostname.
 
   # helium-01-exclusive system packages (not recommended)
