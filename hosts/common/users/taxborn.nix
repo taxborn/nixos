@@ -15,6 +15,7 @@
       "networkmanager"
       "audio"
       "video"
+      "docker"
     ];
 
     initialHashedPassword = "$y$j9T$sfTsI6QwCtxiJbDQP2XnY/$L.bFrSjEG/Hj3lTz7JZv6by/iYH.b87FaV.FIwfj1K6";

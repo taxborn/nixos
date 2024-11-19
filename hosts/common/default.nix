@@ -35,6 +35,8 @@
     enableSSHSupport = true;
   };
 
+  virtualisation.docker.enable = true;
+
   programs.zsh.enable = true;
 
   services.openssh = {
