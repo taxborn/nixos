@@ -1,3 +1,9 @@
+/*
+Uranium configuration. This is my desktop PC.
+
+CPU: Intel i7-13700K
+GPU: XFX Speedster MERC310 AMD RX 7900 XT
+*/
 {
   config,
   lib,

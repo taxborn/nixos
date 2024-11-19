@@ -21,7 +21,6 @@
     "rtsx_pci_sdmmc"
   ];
   boot.initrd.kernelModules = [ "dm-snapshot" ];
-  boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-uuid/c3f55e53-8168-4d39-a56b-a9a2d1fed129";
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 

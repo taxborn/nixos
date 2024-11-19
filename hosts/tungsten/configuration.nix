@@ -1,3 +1,9 @@
+/*
+Tungsten, my Dell XPS 15 9520
+
+CPU: Intel i9-12900HK
+GPU: GeForce RTX 3050 Ti
+*/
 { pkgs, ... }:
 
 {
@@ -12,6 +18,7 @@
       crypthome UUID=63ee1220-800d-43be-9694-c0c89a1fc63c /root/home.key
     '';
   };
+  boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-uuid/c3f55e53-8168-4d39-a56b-a9a2d1fed129";
 
   # Enable touchpad support
   services.libinput.enable = true;

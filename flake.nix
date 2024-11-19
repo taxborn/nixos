@@ -13,6 +13,8 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    vscode-server.url = "github:nix-community/nixos-vscode-server";
+
     # Hardware Configuration
     nixos-hardware.url = "github:nixos/nixos-hardware";
   };
@@ -23,6 +25,7 @@
       home-manager,
       nixpkgs,
       nixos-hardware,
+      vscode-server,
       ...
     }@inputs:
     let
@@ -49,7 +52,10 @@
           specialArgs = {
             inherit inputs outputs;
           };
-          modules = [ ./hosts/uranium ];
+          modules = [ 
+            vscode-server.nixosModules.default
+            ./hosts/uranium
+          ];
         };
 
         tungsten = nixpkgs.lib.nixosSystem {
@@ -57,6 +63,7 @@
             inherit inputs outputs;
           };
           modules = [
+            vscode-server.nixosModules.default
             nixos-hardware.nixosModules.dell-xps-15-9520
             ./hosts/tungsten
           ];
@@ -66,14 +73,20 @@
           specialArgs = {
             inherit inputs outputs;
           };
-          modules = [ ./hosts/helium-01 ];
+          modules = [
+            vscode-server.nixosModules.default
+            ./hosts/helium-01
+          ];
         };
 
         helium-02 = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs outputs;
           };
-          modules = [ ./hosts/helium-02 ];
+          modules = [
+            ./hosts/helium-02
+            vscode-server.nixosModules.default
+          ];
         };
       };
 
