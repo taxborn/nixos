@@ -1,15 +1,19 @@
 Host tungsten
 	Hostname 10.0.0.4
+	IdentityFile ~/.ssh/uranium
 	User taxborn
 
 Host h01
-        Hostname 10.0.0.5
+	Hostname 10.0.0.5
+	IdentityFile ~/.ssh/uranium
 	User taxborn
 
 Host h02
-        Hostname 10.0.0.6
+	Hostname 10.0.0.6
+	IdentityFile ~/.ssh/uranium
 	User taxborn
 
 Host neon
 	Hostname 15.204.234.44
+	IdentityFile ~/.ssh/uranium
 	User ubuntu
