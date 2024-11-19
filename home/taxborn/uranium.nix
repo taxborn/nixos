@@ -8,7 +8,7 @@
 
   home.file = {
     ".ssh/config" = {
-      source = ../../dots/ssh_config-uranium;
+      source = ../../dots/ssh/ssh_config-uranium;
       force = true;
     };
   };

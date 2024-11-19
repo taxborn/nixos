@@ -8,7 +8,7 @@
 
   home.file = {
     ".ssh/config" = {
-      source = ../../dots/ssh_config-tungsten;
+      source = ../../dots/ssh/ssh_config-tungsten;
       force = true;
     };
   };
