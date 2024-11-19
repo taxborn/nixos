@@ -41,7 +41,7 @@
     enable = true;
     settings.PermitRootLogin = "no";
     settings.PasswordAuthentication = false;
-    settings.UsePAM = false;
+    settings.UsePAM = true;
   };
 
   services.vscode-server.enable = true;
