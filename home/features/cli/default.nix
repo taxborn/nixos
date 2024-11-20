@@ -5,8 +5,6 @@
   imports = [
     ./zsh.nix
     ./tmux.nix
-    # TODO: is this the proper place to import this?
-    ../languages/c.nix
   ];
 
   programs = {

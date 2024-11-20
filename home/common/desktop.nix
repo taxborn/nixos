@@ -5,12 +5,13 @@
   imports = [
     ../taxborn/home.nix
     ./default.nix
-    ../features/cli
   ];
 
   features = {
-    cli = {
-      zsh.enable = true;
+    languages = {
+      zig.enable = true;
+      rust.enable = true;
+      c.enable = true;
     };
   };
 

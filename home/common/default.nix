@@ -12,7 +12,17 @@ let
   };
 in
 {
-  imports = [ "${vscode-server}/modules/vscode-server/home.nix" ];
+  imports = [
+    "${vscode-server}/modules/vscode-server/home.nix"
+    ../features/cli
+    ../features/languages
+  ];
+
+  features = {
+    cli = {
+      zsh.enable = true;
+    };
+  };
 
   services.vscode-server.enable = true;
 
