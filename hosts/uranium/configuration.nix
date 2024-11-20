@@ -32,9 +32,7 @@
   };
 
   # uranium-exclusive system packages
-  environment.systemPackages = with pkgs; [ 
-    clinfo
-  ];
+  environment.systemPackages = with pkgs; [ clinfo ];
 
   system.stateVersion = "24.05"; # Don't update
 }

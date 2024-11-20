@@ -46,7 +46,7 @@
     jq
     ripgrep
     tldr
-	unzip
+    unzip
     xsel
     zip
   ];
