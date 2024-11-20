@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ pkgs, config, lib, ... }:
 
 with lib;
 let
@@ -8,6 +8,10 @@ in
   options.features.cli.zsh.enable = mkEnableOption "enable extended zsh configuration";
 
   config = mkIf cfg.enable {
+    home.packages = with pkgs; [
+      fzf-zsh
+    ];
+
     programs.zsh = {
       enable = true;
       shellAliases = {

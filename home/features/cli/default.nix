@@ -5,6 +5,8 @@
   imports = [
     ./zsh.nix
     ./tmux.nix
+    # TODO: is this the proper place to import this?
+    ../languages/c.nix
   ];
 
   programs = {
@@ -28,6 +30,8 @@
     # TODO: configure
     bat.enable = true;
 
+    feh.enable = true;
+
     ranger = {
       enable = true;
       settings.line_numbers = "relative";
@@ -38,11 +42,11 @@
     coreutils # needed?
     fd
     fzf
-    fzf-zsh
     htop
     jq
     ripgrep
     tldr
+	unzip
     xsel
     zip
   ];

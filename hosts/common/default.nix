@@ -35,6 +35,8 @@
     enableSSHSupport = true;
   };
 
+  programs.nix-ld.enable = true;
+
   virtualisation.docker.enable = true;
 
   programs.zsh.enable = true;
