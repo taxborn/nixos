@@ -48,6 +48,9 @@
     settings.UsePAM = true;
   };
 
+  # beloved tailscale
+  services.tailscale.enable = true;
+
   # nix
   nixpkgs = {
     # You can add overlays here
