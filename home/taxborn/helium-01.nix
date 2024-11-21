@@ -1,17 +1,7 @@
 { pkgs, ... }:
 
 {
-  imports = [
-    ./home.nix
-    ../common
-    ../features/cli
-  ];
-
-  features = {
-    cli = {
-      zsh.enable = true;
-    };
-  };
+  imports = [ ../common/server.nix ];
 
   # taxborn packages only on the nucs
   # home.packages = with pkgs; [ ];

@@ -3,7 +3,7 @@
 {
   imports = [ ../common/server.nix ];
 
-  # taxborn packages only on the nucs
+  # taxborn packages only on helium-02
   # home.packages = with pkgs; [ ];
 
   programs.keychain.keys = [
