@@ -11,9 +11,11 @@
   };
 
   home.packages = with pkgs; [
+    discord
     dmenu
     google-chrome
     obsidian
+    spotify
 
     # fonts
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
