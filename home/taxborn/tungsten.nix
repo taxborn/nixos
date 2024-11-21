@@ -14,6 +14,10 @@
       source = ../../dots/ssh/ssh_config-tungsten;
       force = true;
     };
+    ".Xresources".text = ''
+      Xft.dpi: 192
+    '';
+  };
     ".xinitrc".text = ''
       #!/bin/bash
 
@@ -25,6 +29,8 @@
 
       # set the background
       # bash ~/.fehbg
+
+      xrdb -merge ~/.Xresources
 
       # start dwm
       exec dwm
