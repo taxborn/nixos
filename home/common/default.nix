@@ -21,6 +21,7 @@ in
   features = {
     cli = {
       zsh.enable = true;
+      tmux.enable = true;
     };
   };
 
