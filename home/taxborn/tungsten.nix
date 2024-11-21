@@ -17,7 +17,6 @@
     ".Xresources".text = ''
       Xft.dpi: 192
     '';
-  };
     ".xinitrc".text = ''
       #!/bin/bash
 
