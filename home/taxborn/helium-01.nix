@@ -1,9 +1,12 @@
 { pkgs, ... }:
 
 {
-  imports = [ ../common/server.nix ];
+  imports = [
+    ../common/server.nix
+    ../common
+  ];
 
-  # taxborn packages only on the nucs
+  # taxborn packages only on helium-01
   # home.packages = with pkgs; [ ];
 
   programs.keychain.keys = [

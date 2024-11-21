@@ -1,7 +1,10 @@
 { pkgs, ... }:
 
 {
-  imports = [ ../common/server.nix ];
+  imports = [
+    ../common/server.nix
+    ../common
+  ];
 
   # taxborn packages only on helium-02
   # home.packages = with pkgs; [ ];

@@ -25,6 +25,60 @@ in
     };
   };
 
+  # taxborn packages I want everywhere
+  # home.packages = with pkgs; [ ];
+
+  programs = {
+    neovim = {
+      enable = true;
+      defaultEditor = true;
+      package = pkgs.unstable.neovim-unwrapped;
+
+      viAlias = true;
+      vimAlias = true;
+      vimdiffAlias = true;
+    };
+
+    git = {
+      enable = true;
+      userEmail = "hello@taxborn.com";
+      userName = "Braxton Fair";
+      signing = {
+        key = "9BC40CD3E8BA5EF2";
+        signByDefault = true;
+      };
+      extraConfig = {
+        init.defaultBranch = "main";
+      };
+    };
+
+    keychain = {
+      enable = true;
+      enableZshIntegration = true;
+      agents = [
+        "ssh"
+        "gpg"
+      ];
+      extraFlags = [
+        "--nogui"
+        "--quiet"
+      ];
+    };
+
+    home-manager.enable = true;
+  };
+
+  home.file = {
+    ".gnupg/gpg-agent.conf".text = ''
+      default-cache-ttl 86400
+      max-cache-ttl 86400
+    '';
+  };
+
+  home.sessionVariables = {
+    EDITOR = "nvim";
+  };
+
   services.vscode-server.enable = true;
 
   nixpkgs = {
@@ -54,4 +108,10 @@ in
       warn-dirty = false;
     };
   };
+
+  home.username = lib.mkDefault "taxborn";
+  home.homeDirectory = lib.mkDefault "/home/${config.home.username}";
+
+  home.stateVersion = "24.05";
+
 }

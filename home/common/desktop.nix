@@ -2,11 +2,6 @@
 { pkgs, ... }:
 
 {
-  imports = [
-    ../taxborn/home.nix
-    ./default.nix
-  ];
-
   features = {
     languages = {
       zig.enable = true;
