@@ -16,43 +16,26 @@
     "xhci_pci"
     "ahci"
     "nvme"
-    "usb_storage"
     "usbhid"
+    "usb_storage"
     "sd_mod"
     "rtsx_pci_sdmmc"
   ];
-  boot.initrd.kernelModules = [ "dm-snapshot" ];
-  boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-uuid/a0dbf7fd-7648-4128-828b-5e3f7263c029";
+  boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/8ec43468-56c7-4fb5-bf74-61016fd5c734";
-    fsType = "ext4";
-  };
-
-  # external hdd
-  fileSystems."/mnt/hdd" = {
-    device = "/dev/disk/by-uuid/7248AAAD48AA7011";
-    fsType = "ntfs-3g";
-    options = [
-      "rw"
-      "uid=1000"
-    ];
-  };
-
-  # sd card
-  fileSystems."/mnt/sd" = {
-    device = "/dev/disk/by-uuid/8bbced07-3b52-4a32-b354-2281029c8190";
+    device = "/dev/disk/by-uuid/d7df6a67-d18a-4ee3-a66d-944e396b4505";
     fsType = "ext4";
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/6667-BB87";
+    device = "/dev/disk/by-uuid/537D-7A22";
     fsType = "vfat";
     options = [
-      "fmask=0022"
-      "dmask=0022"
+      "fmask=0077"
+      "dmask=0077"
     ];
   };
 
