@@ -26,9 +26,16 @@
 
       # set the background
       bash ~/.fehbg
+      # set the screen layout
+      bash ~/.screenlayout/main.sh
 
       # start dwm
       exec dwm
+    '';
+
+    ".screenlayout/main.sh".text = ''
+      #!/bin/sh
+      xrandr --output DisplayPort-2 --off --output DisplayPort-3 --off --output DisplayPort-4 --mode 2560x1440 --rate 165 --pos 0x0 --rotate normal --output HDMI-A-4 --mode 1920x1080 --pos 2560x360 --rotate normal
     '';
   };
 

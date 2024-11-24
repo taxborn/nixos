@@ -26,7 +26,7 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   # packages I want installed on ALL systems
-  environment.systemPackages = with pkgs; [ wget ];
+  environment.systemPackages = with pkgs; [ wget gnumake ];
 
   users.defaultUserShell = pkgs.zsh;
 

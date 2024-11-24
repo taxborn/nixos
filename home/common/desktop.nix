@@ -7,6 +7,7 @@
       zig.enable = true;
       rust.enable = true;
       c.enable = true;
+      javascript.enable = true;
     };
   };
 
