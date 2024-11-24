@@ -2,6 +2,7 @@
 
 {
   networking.hostName = "helium-01"; # Define your hostname.
+  boot.supportedFilesystems = [ "ntfs" ];
 
   # helium-01-exclusive system packages (not recommended)
   # environment.systemPackages = with pkgs; [ ];
