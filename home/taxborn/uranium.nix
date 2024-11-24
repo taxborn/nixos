@@ -20,7 +20,7 @@
 
       # set the status bar
       while [ true ]; do
-              # xsetroot -name " `date -Is` "
+              xsetroot -name " `date -Is` "
               sleep 1
       done &
 

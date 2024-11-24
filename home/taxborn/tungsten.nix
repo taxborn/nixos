@@ -22,12 +22,12 @@
 
       # set the status bar
       while [ true ]; do
-              # xsetroot -name " `date -Is` "
+              xsetroot -name " `cat /sys/class/power_supply/BAT0/capacity`% `date -Is` "
               sleep 1
       done &
 
       # set the background
-      # bash ~/.fehbg
+      bash ~/.fehbg
 
       xrdb -merge ~/.Xresources
 

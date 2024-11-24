@@ -14,6 +14,7 @@
     discord
     dmenu
     google-chrome
+    xorg.xsetroot
     obsidian
     spotify
 
