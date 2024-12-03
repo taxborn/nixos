@@ -14,9 +14,15 @@
   ];
 
   # bootloader config
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.timeout = 0;
+  boot.loader = {
+    systemd-boot = {
+      enable = true;
+      editor = false;
+      consoleMode = "auto";
+    };
+    efi.canTouchEfiVariables = true;
+    timeout = 0;
+  };
 
   # networking
   networking.networkmanager.enable = true;
@@ -26,7 +32,10 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   # packages I want installed on ALL systems
-  environment.systemPackages = with pkgs; [ wget gnumake ];
+  environment.systemPackages = with pkgs; [
+    wget
+    gnumake
+  ];
 
   users.defaultUserShell = pkgs.zsh;
 

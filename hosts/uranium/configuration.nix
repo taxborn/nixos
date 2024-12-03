@@ -26,7 +26,7 @@
       amdvlk
       rocmPackages.clr.icd
     ];
-    # For 32 bit applications 
+    # For 32 bit applications
     extraPackages32 = with pkgs; [ driversi686Linux.amdvlk ];
   };
 
