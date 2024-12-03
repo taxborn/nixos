@@ -26,5 +26,5 @@
     ];
   };
 
-  home-manager.users.taxborn = import taxborn/${config.networking.hostName}.nix;
+  home-manager.users.taxborn = import ../../../home/taxborn/${config.networking.hostName}.nix;
 }

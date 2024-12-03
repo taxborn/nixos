@@ -19,9 +19,8 @@
   # drivers and changes for the 7900 XT
   services.xserver.videoDrivers = [ "amdgpu" ];
   systemd.tmpfiles.rules = [ "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}" ];
-  hardware.opengl = {
-    driSupport32Bit = true; # For 32 bit applications, deprecated
-    # hardware.graphics.enable32Bit = true; # For 32 bit applications, updated way
+  hardware.graphics = {
+    enable32Bit = true; # For 32 bit applications
 
     extraPackages = with pkgs; [
       amdvlk

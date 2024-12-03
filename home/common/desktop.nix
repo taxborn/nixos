@@ -24,7 +24,10 @@
   ];
 
   programs = {
-    alacritty.enable = true;
+    alacritty = {
+      enable = true;
+      package = pkgs.unstable.alacritty;
+    };
     vscode.enable = true;
   };
 }

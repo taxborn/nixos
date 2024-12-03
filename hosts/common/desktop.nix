@@ -5,10 +5,10 @@
   # sound
   hardware.pulseaudio.enable = true;
   # TODO: pipewire
-  # services.pipewire = {
-  #   enable = true;
-  #   pulse.enable = true;
-  # };
+  services.pipewire = {
+   enable = false;
+   pulse.enable = false;
+  };
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 
