@@ -24,6 +24,8 @@
     timeout = 0;
   };
 
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   # networking
   networking.networkmanager.enable = true;
   networking.firewall.enable = false;
