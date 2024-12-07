@@ -24,10 +24,10 @@
               sleep 1
       done &
 
-      # set the background
-      bash ~/.fehbg
       # set the screen layout
       bash ~/.screenlayout/main.sh
+      # set the background
+      bash ~/.fehbg
 
       # start dwm
       exec dwm
