@@ -49,6 +49,15 @@ to try a few more things like:
 
 One of the NUCs has 32 GB of RAM, while the other has 16 GB. Each has a 2 TB NVMe SSD for storage.
 
+Services ran:
+- Forgejo (and subsequently deploy runners to both NUCs and my desktop)
+- Immich
+- Paperless-ngx
+- Maybe
+- Glance
+- Vaultwarden
+- A couple of Minecraft servers
+
 # References
 *Also see numbered references in the Goals section*.
 - [Misterio77's config](https://github.com/Misterio77/nix-config)
