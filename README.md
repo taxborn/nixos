@@ -5,24 +5,33 @@ compliance and a few other things mostly hindered by my lack of understanding. T
 a somewhat sensible configuration that I can deploy to my laptop(s), desktop, and homelab.
 
 # Goals, features, wishlist?
-- [ ] Impermanent [1] [2] [3]
-- [ ] btrfs
-- [ ] disko disk configuration
+- [ ] Flakes
+- [ ] Impermanent [1] [2] [3] [5]
+- [ ] btrfs [4] [5]
+- [ ] disko disk configuration [5]
 - [ ] home manager
 - [ ] tailscale
 - [ ] backups (either borg or restic)
 - [ ] Neovim-centric
+- [ ] [agenix](https://github.com/ryantm/agenix) for secrets management (maybe [sops-nix](https://github.com/Mic92/sops-nix))
 - [ ] Wayland / Hyprland
   - [ ] Wofi
   - [ ] Waybar
   - [ ] Dunst
+
+[1]: https://github.com/nix-community/impermanence
+[2]: https://grahamc.com/blog/erase-your-darlings/
+[3]: https://xeiaso.net/blog/paranoid-nixos-2021-07-18/
+[4]: https://github.com/nix-community/impermanence?tab=readme-ov-file#btrfs-subvolumes
+[5]: https://www.youtube.com/watch?v=YPKwkWtK7l0
 
 # Hosts
 These are the devices I run NixOS on. I typically name my devices after elements on the periodic table.
 
 ## Uranium
 A desktop computer I built in August of 2023. It runs any game I throw at it, an Intel i7-13700k (not overclocked) does well
-in compiling things, so not much more I can ask for.
+in compiling things, so not much more I can ask for. This is where most of my development is done, however I do want to move
+to a more laptop-first setup to encourage myself to step away from my office more frequently.
 
 ## Tungsten
 My Dell XPS 15 9520 laptop. Served me *extremely* well during college. It does get a little hot and is a little
@@ -40,6 +49,13 @@ to try a few more things like:
 
 One of the NUCs has 32 GB of RAM, while the other has 16 GB. Each has a 2 TB NVMe SSD for storage.
 
-[1]: https://github.com/nix-community/impermanence
-[2]: https://grahamc.com/blog/erase-your-darlings/
-[3]: https://xeiaso.net/blog/paranoid-nixos-2021-07-18/
+# References
+*Also see numbered references in the Goals section*.
+- [Misterio77's config](https://github.com/Misterio77/nix-config)
+- [Ian Hengry's blog](https://ianthehenry.com/posts/)
+- [Henrik Lissner's config](https://github.com/hlissner/dotfiles)
+- [LongerHV's config](https://github.com/LongerHV/nixos-configuration)
+- [gvolpe's config](https://github.com/gvolpe/nix-config)
+- [workflow's dotfiles](https://github.com/workflow/dotfiles)
+- [basic setup forom JackTheMico](https://github.com/JackTheMico/nixos-impermanent)
+- [another small blog on nixos](https://guekka.github.io/)
