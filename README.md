@@ -8,8 +8,11 @@ a somewhat sensible configuration that I can deploy to my laptop(s), desktop, an
 - [ ] Flakes
 - [ ] Impermanent [1] [2] [3] [5]
 - [ ] btrfs [4] [5]
+- [ ] encrypted (aside from headless systems)
+  - [ ] eventually a yubikey or similar solution for encrypting headless systems
 - [ ] disko disk configuration [5]
 - [ ] home manager
+- [ ] fish shell
 - [ ] tailscale
 - [ ] backups (either borg or restic)
 - [ ] Neovim-centric
@@ -25,6 +28,16 @@ a somewhat sensible configuration that I can deploy to my laptop(s), desktop, an
 [4]: https://github.com/nix-community/impermanence?tab=readme-ov-file#btrfs-subvolumes
 [5]: https://www.youtube.com/watch?v=YPKwkWtK7l0
 
+# Partitions
+For systems I can partition, I will follow Misterio77's config (linked in references)'s philosphy of:
+- A single btrfs partition
+  - `/nix` subvolume
+  - `/persist` subvolume for impermanence [1]
+  - `/` subvolume (cleared on every boot)
+- 512 MB boot partition, using `systemd-boot`
+
+Swap is handled by zram.
+
 # Hosts
 These are the devices I run NixOS on. I typically name my devices after elements on the periodic table.
 
@@ -34,9 +47,11 @@ in compiling things, so not much more I can ask for. This is where most of my de
 to a more laptop-first setup to encourage myself to step away from my office more frequently.
 
 ## Tungsten
-My Dell XPS 15 9520 laptop. Served me *extremely* well during college. It does get a little hot and is a little
+My Dell XPS 15 9520 laptop. It served me *extremely* well during college. It does get a little hot and is a little
 large and overkill for my current needs, so I'd like to eventually replace it. Current contenders are either a
 [frame.work](https://frame.work) laptop or an M-series Macbook *(Air likely, maybe Pro?)*.
+
+**TODO:** There are 2x1TB NVME SSDs in here, I never really use much space on it so maybe RAID would be beneficial here.
 
 ## Helium (`01` and `02`)
 These are a pair of Intel NUC8i5BEK's that I use for a homelab. I intend to get another NUC or a Raspberry Pi
@@ -57,6 +72,8 @@ Services ran:
 - Glance
 - Vaultwarden
 - A couple of Minecraft servers
+
+**TODO:** Setup wake on LAN for these servers!
 
 # References
 *Also see numbered references in the Goals section*.
