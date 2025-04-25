@@ -1,0 +1,757 @@
+{ lib, config, pkgs, ... }:
+
+{
+  programs = {
+    ghostty.enable = true;
+    waybar = {
+      enable = true;
+      settings = {
+        primary = {
+	  height = 32;
+	  # https://developer.mozilla.org/en-US/docs/Web/CSS/margin
+	  margin = "8 8 0";
+	  position = "top";
+	  modules-left = [
+            "hyprland/workspaces"
+            "hyprland/submap" # ???
+	  ];
+	  modules-center = [
+            "cpu"
+	    "memory"
+	    "clock"
+	  ];
+	  modules-right = [
+            "tray"
+	    "network"
+	    "pipewire"
+	    "battery"
+	  ];
+          clock = {
+            interval = 1;
+            format = "{:%Y-%m-%d %H:%M:%S}";
+            format-alt = "{:%Y-%m-%dT%H:%M:%S%z}";
+            on-click-left = "mode";
+            tooltip-format = ''
+              <big>{:%Y %B}</big>
+              <tt><small>{calendar}</small></tt>
+	    '';
+          };
+          cpu = {
+            format = "  {usage}%";
+          };
+	  memory = {
+            format = "  {}%";
+            interval = 5;
+          };
+        battery = {
+          bat = "BAT0";
+          interval = 10;
+          format-icons = [
+            "󰁺"
+            "󰁻"
+            "󰁼"
+            "󰁽"
+            "󰁾"
+            "󰁿"
+            "󰂀"
+            "󰂁"
+            "󰂂"
+            "󰁹"
+          ];
+          format = "{icon} {capacity}%";
+          format-charging = "󰂄 {capacity}%";
+          onclick = "";
+        };
+        network = {
+          interval = 3;
+          format-wifi = "   {essid}";
+          format-ethernet = "󰈁 Connected";
+          format-disconnected = "";
+          tooltip-format = ''
+            {ifname}
+            {ipaddr}/{cidr}
+            Up: {bandwidthUpBits}
+            Down: {bandwidthDownBits}'';
+        };
+        };
+      };
+      style = ''
+* {
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: "JetBrainsMonoNL Nerd Font Mono", FontAwesome, Helvetica, Arial, sans-serif;
+    font-size: 12px;
+}
+
+window#waybar {
+    background-color: rgba(43, 48, 59, 0.5);
+    border-bottom: 3px solid rgba(100, 114, 125, 0.5);
+    color: #ffffff;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+/*
+window#waybar.empty {
+    background-color: transparent;
+}
+window#waybar.solo {
+    background-color: #FFFFFF;
+}
+*/
+
+window#waybar.termite {
+    background-color: #3F3F3F;
+}
+
+window#waybar.chromium {
+    background-color: #000000;
+    border: none;
+}
+
+button {
+    /* Use box-shadow instead of border so the text isn't offset */
+    box-shadow: inset 0 -3px transparent;
+    /* Avoid rounded borders under each button name */
+    border: none;
+    border-radius: 0;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+button:hover {
+    background: inherit;
+    box-shadow: inset 0 -3px #ffffff;
+}
+
+/* you can set a style on hover for any module like this */
+#pulseaudio:hover {
+    background-color: #a37800;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    background-color: transparent;
+    color: #ffffff;
+}
+
+#workspaces button:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#workspaces button.focused {
+    background-color: #64727D;
+    box-shadow: inset 0 -3px #ffffff;
+}
+
+#workspaces button.urgent {
+    background-color: #eb4d4b;
+}
+
+#mode {
+    background-color: #64727D;
+    box-shadow: inset 0 -3px #ffffff;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#wireplumber,
+#custom-media,
+#tray,
+#mode,
+#idle_inhibitor,
+#scratchpad,
+#power-profiles-daemon,
+#mpd {
+    padding: 0 10px;
+    color: #ffffff;
+}
+
+#window,
+#workspaces {
+    margin: 0 4px;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+
+#clock {
+    background-color: #64727D;
+}
+
+#battery {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+#battery.charging, #battery.plugged {
+    color: #ffffff;
+    background-color: #26A65B;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
+
+/* Using steps() instead of linear as a timing function to limit cpu usage */
+#battery.critical:not(.charging) {
+    background-color: #f53c3c;
+    color: #ffffff;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#power-profiles-daemon {
+    padding-right: 15px;
+}
+
+#power-profiles-daemon.performance {
+    background-color: #f53c3c;
+    color: #ffffff;
+}
+
+#power-profiles-daemon.balanced {
+    background-color: #2980b9;
+    color: #ffffff;
+}
+
+#power-profiles-daemon.power-saver {
+    background-color: #2ecc71;
+    color: #000000;
+}
+
+label:focus {
+    background-color: #000000;
+}
+
+#cpu {
+    background-color: #2ecc71;
+    color: #000000;
+}
+
+#memory {
+    background-color: #9b59b6;
+}
+
+#disk {
+    background-color: #964B00;
+}
+
+#backlight {
+    background-color: #90b1b1;
+}
+
+#network {
+    background-color: #2980b9;
+}
+
+#network.disconnected {
+    background-color: #f53c3c;
+}
+
+#pulseaudio {
+    background-color: #f1c40f;
+    color: #000000;
+}
+
+#pulseaudio.muted {
+    background-color: #90b1b1;
+    color: #2a5c45;
+}
+
+#wireplumber {
+    background-color: #fff0f5;
+    color: #000000;
+}
+
+#wireplumber.muted {
+    background-color: #f53c3c;
+}
+
+#custom-media {
+    background-color: #66cc99;
+    color: #2a5c45;
+    min-width: 100px;
+}
+
+#custom-media.custom-spotify {
+    background-color: #66cc99;
+}
+
+#custom-media.custom-vlc {
+    background-color: #ffa000;
+}
+
+#temperature {
+    background-color: #f0932b;
+}
+
+#temperature.critical {
+    background-color: #eb4d4b;
+}
+
+#tray {
+    background-color: #2980b9;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #eb4d4b;
+}
+
+#idle_inhibitor {
+    background-color: #2d3436;
+}
+
+#idle_inhibitor.activated {
+    background-color: #ecf0f1;
+    color: #2d3436;
+}
+
+#mpd {
+    background-color: #66cc99;
+    color: #2a5c45;
+}
+
+#mpd.disconnected {
+    background-color: #f53c3c;
+}
+
+#mpd.stopped {
+    background-color: #90b1b1;
+}
+
+#mpd.paused {
+    background-color: #51a37a;
+}
+
+#language {
+    background: #00b093;
+    color: #740864;
+    padding: 0 5px;
+    margin: 0 5px;
+    min-width: 16px;
+}
+
+#keyboard-state {
+    background: #97e1ad;
+    color: #000000;
+    padding: 0 0px;
+    margin: 0 5px;
+    min-width: 16px;
+}
+
+#keyboard-state > label {
+    padding: 0 5px;
+}
+
+#keyboard-state > label.locked {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#scratchpad {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#scratchpad.empty {
+	background-color: transparent;
+}
+
+#privacy {
+    padding: 0;
+}
+
+#privacy-item {
+    padding: 0 5px;
+    color: white;
+}
+
+#privacy-item.screenshare {
+    background-color: #cf5700;
+}
+
+#privacy-item.audio-in {
+    background-color: #1ca000;
+}
+
+#privacy-item.audio-out {
+    background-color: #0069d4;
+}
+      '';
+    };
+    wofi = {
+      enable = true;
+      settings = {
+        image_size = 48;
+        columns = 3;
+        allow_images = true;
+        insensitive = true;
+        run-always_parse_args = true;
+        run-cache_file = "/dev/null";
+        run-exec_search = true;
+        matching = "multi-contains";
+      };
+    };
+  };
+
+  services.dunst.enable = true;
+
+  home.packages = with pkgs; [
+    brightnessctl
+    wl-clipboard
+  ];
+
+  home.sessionVariables = {
+    EDITOR = "nvim";
+    TERMINAL = "ghostty";
+    GBM_BACKEND= "nvidia-drm";
+    __GLX_VENDOR_LIBRARY_NAME= "nvidia";
+    LIBVA_DRIVER_NAME= "nvidia"; # hardware acceleration
+    __GL_VRR_ALLOWED="1";
+    WLR_NO_HARDWARE_CURSORS = "1";
+    WLR_RENDERER_ALLOW_SOFTWARE = "1";
+    CLUTTER_BACKEND = "wayland";
+    WLR_RENDERER = "vulkan";
+
+    XDG_CURRENT_DESKTOP = "Hyprland";
+    XDG_SESSION_DESKTOP = "Hyprland";
+    XDG_SESSION_TYPE = "wayland";
+  };
+
+  wayland.windowManager.hyprland = {
+    enable = true;
+    package = null;
+    portalPackage = null;
+    systemd = {
+      enable = true;
+      # Same as default, but stop graphical-session too
+      extraCommands = lib.mkBefore [
+        "systemctl --user stop graphical-session.target"
+        "systemctl --user start hyprland-session.target"
+      ];
+      variables = [
+        "DISPLAY"
+        "HYPRLAND_INSTANCE_SIGNATURE"
+        "WAYLAND_DISPLAY"
+        "XDG_CURRENT_DESKTOP"
+      ];
+    };
+
+    settings = {
+      general = {
+	gaps_in = 4;
+	gaps_out = 8;
+      };
+    };
+
+    extraConfig = ''
+################
+### MONITORS ###
+################
+
+# See https://wiki.hyprland.org/Configuring/Monitors/
+monitor=,preferred,auto,auto
+
+###################
+### MY PROGRAMS ###
+###################
+
+# See https://wiki.hyprland.org/Configuring/Keywords/
+
+# Set programs that you use
+$terminal = ghostty
+$fileManager = dolphin
+$menu = wofi --show drun
+
+#################
+### AUTOSTART ###
+#################
+
+# Autostart necessary processes (like notifications daemons, status bars, etc.)
+# Or execute your favorite apps at launch like this:
+
+exec-once = $terminal & waybar
+exec-once = firefox & dunst
+
+
+#############################
+### ENVIRONMENT VARIABLES ###
+#############################
+
+# See https://wiki.hyprland.org/Configuring/Environment-variables/
+
+env = XCURSOR_SIZE,24
+env = HYPRCURSOR_SIZE,24
+
+###################
+### PERMISSIONS ###
+###################
+
+# See https://wiki.hyprland.org/Configuring/Permissions/
+
+# ecosystem {
+#   enforce_permissions = 1
+# }
+
+# permission = /usr/(bin|local/bin)/grim, screencopy, allow
+# permission = /usr/(lib|libexec|lib64)/xdg-desktop-portal-hyprland, screencopy, allow
+
+
+#####################
+### LOOK AND FEEL ###
+#####################
+
+# Refer to https://wiki.hyprland.org/Configuring/Variables/
+
+# https://wiki.hyprland.org/Configuring/Variables/#general
+general {
+    border_size = 2
+
+    # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
+    col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg
+    col.inactive_border = rgba(595959aa)
+
+    # Set to true enable resizing windows by clicking and dragging on borders and gaps
+    resize_on_border = false
+
+    # Please see https://wiki.hyprland.org/Configuring/Tearing/ before you turn this on
+    allow_tearing = false
+
+    layout = dwindle
+}
+
+# https://wiki.hyprland.org/Configuring/Variables/#decoration
+decoration {
+    rounding = 10
+    rounding_power = 2
+
+    # Change transparency of focused and unfocused windows
+    active_opacity = 1.0
+    inactive_opacity = 1.0
+
+    shadow {
+        enabled = true
+        range = 4
+        render_power = 3
+        color = rgba(1a1a1aee)
+    }
+
+    # https://wiki.hyprland.org/Configuring/Variables/#blur
+    blur {
+        enabled = true
+        size = 3
+        passes = 1
+
+        vibrancy = 0.1696
+    }
+}
+
+# https://wiki.hyprland.org/Configuring/Variables/#animations
+animations {
+    enabled = yes, please :)
+
+    # Default animations, see https://wiki.hyprland.org/Configuring/Animations/ for more
+
+    bezier = easeOutQuint,0.23,1,0.32,1
+    bezier = easeInOutCubic,0.65,0.05,0.36,1
+    bezier = linear,0,0,1,1
+    bezier = almostLinear,0.5,0.5,0.75,1.0
+    bezier = quick,0.15,0,0.1,1
+
+    animation = global, 1, 10, default
+    animation = border, 1, 5.39, easeOutQuint
+    animation = windows, 1, 4.79, easeOutQuint
+    animation = windowsIn, 1, 4.1, easeOutQuint, popin 87%
+    animation = windowsOut, 1, 1.49, linear, popin 87%
+    animation = fadeIn, 1, 1.73, almostLinear
+    animation = fadeOut, 1, 1.46, almostLinear
+    animation = fade, 1, 3.03, quick
+    animation = layers, 1, 3.81, easeOutQuint
+    animation = layersIn, 1, 4, easeOutQuint, fade
+    animation = layersOut, 1, 1.5, linear, fade
+    animation = fadeLayersIn, 1, 1.79, almostLinear
+    animation = fadeLayersOut, 1, 1.39, almostLinear
+    animation = workspaces, 1, 1.94, almostLinear, fade
+    animation = workspacesIn, 1, 1.21, almostLinear, fade
+    animation = workspacesOut, 1, 1.94, almostLinear, fade
+}
+
+# Ref https://wiki.hyprland.org/Configuring/Workspace-Rules/
+# "Smart gaps" / "No gaps when only"
+# uncomment all if you wish to use that.
+# workspace = w[tv1], gapsout:0, gapsin:0
+# workspace = f[1], gapsout:0, gapsin:0
+# windowrule = bordersize 0, floating:0, onworkspace:w[tv1]
+# windowrule = rounding 0, floating:0, onworkspace:w[tv1]
+# windowrule = bordersize 0, floating:0, onworkspace:f[1]
+# windowrule = rounding 0, floating:0, onworkspace:f[1]
+
+# See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
+dwindle {
+    pseudotile = true # Master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
+    preserve_split = true # You probably want this
+}
+
+# See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
+master {
+    new_status = master
+}
+
+# https://wiki.hyprland.org/Configuring/Variables/#misc
+misc {
+    force_default_wallpaper = -1 # Set to 0 or 1 to disable the anime mascot wallpapers
+    disable_hyprland_logo = false # If true disables the random hyprland logo / anime girl background. :(
+}
+
+
+#############
+### INPUT ###
+#############
+
+# https://wiki.hyprland.org/Configuring/Variables/#input
+input {
+    kb_layout = us
+    kb_variant =
+    kb_model =
+    kb_options =
+    kb_rules =
+
+    follow_mouse = 1
+
+    sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
+
+    touchpad {
+        natural_scroll = false
+    }
+}
+
+# https://wiki.hyprland.org/Configuring/Variables/#gestures
+gestures {
+    workspace_swipe = false
+}
+
+# Example per-device config
+# See https://wiki.hyprland.org/Configuring/Keywords/#per-device-input-configs for more
+device {
+    name = epic-mouse-v1
+    sensitivity = -0.5
+}
+
+
+###################
+### KEYBINDINGS ###
+###################
+
+# See https://wiki.hyprland.org/Configuring/Keywords/
+$mainMod = SUPER # Sets "Windows" key as main modifier
+
+# Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
+bind = $mainMod, Return, exec, $terminal
+bind = $mainMod SHIFT, Q, killactive,
+bind = $mainMod SHIFT, E, exit,
+bind = $mainMod, E, exec, $fileManager
+bind = $mainMod, V, togglefloating,
+bind = $mainMod, R, exec, $menu
+bind = $mainMod, P, pseudo, # dwindle
+bind = $mainMod, J, togglesplit, # dwindle
+
+# Move focus with mainMod + arrow keys
+bind = $mainMod, left, movefocus, l
+bind = $mainMod, right, movefocus, r
+bind = $mainMod, up, movefocus, u
+bind = $mainMod, down, movefocus, d
+
+# Switch workspaces with mainMod + [0-9]
+bind = $mainMod, 1, workspace, 1
+bind = $mainMod, 2, workspace, 2
+bind = $mainMod, 3, workspace, 3
+bind = $mainMod, 4, workspace, 4
+bind = $mainMod, 5, workspace, 5
+bind = $mainMod, 6, workspace, 6
+bind = $mainMod, 7, workspace, 7
+bind = $mainMod, 8, workspace, 8
+bind = $mainMod, 9, workspace, 9
+bind = $mainMod, 0, workspace, 10
+
+# Move active window to a workspace with mainMod + SHIFT + [0-9]
+bind = $mainMod SHIFT, 1, movetoworkspace, 1
+bind = $mainMod SHIFT, 2, movetoworkspace, 2
+bind = $mainMod SHIFT, 3, movetoworkspace, 3
+bind = $mainMod SHIFT, 4, movetoworkspace, 4
+bind = $mainMod SHIFT, 5, movetoworkspace, 5
+bind = $mainMod SHIFT, 6, movetoworkspace, 6
+bind = $mainMod SHIFT, 7, movetoworkspace, 7
+bind = $mainMod SHIFT, 8, movetoworkspace, 8
+bind = $mainMod SHIFT, 9, movetoworkspace, 9
+bind = $mainMod SHIFT, 0, movetoworkspace, 10
+
+# Example special workspace (scratchpad)
+bind = $mainMod, S, togglespecialworkspace, magic
+bind = $mainMod SHIFT, S, movetoworkspace, special:magic
+
+# Scroll through existing workspaces with mainMod + scroll
+bind = $mainMod, mouse_down, workspace, e+1
+bind = $mainMod, mouse_up, workspace, e-1
+
+# Move/resize windows with mainMod + LMB/RMB and dragging
+bindm = $mainMod, mouse:272, movewindow
+bindm = $mainMod, mouse:273, resizewindow
+
+# Laptop multimedia keys for volume and LCD brightness
+bindel = ,XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+
+bindel = ,XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+bindel = ,XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+bindel = ,XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
+bindel = ,XF86MonBrightnessUp, exec, brightnessctl s 10%+
+bindel = ,XF86MonBrightnessDown, exec, brightnessctl s 10%-
+
+# Requires playerctl
+bindl = , XF86AudioNext, exec, playerctl next
+bindl = , XF86AudioPause, exec, playerctl play-pause
+bindl = , XF86AudioPlay, exec, playerctl play-pause
+bindl = , XF86AudioPrev, exec, playerctl previous
+
+##############################
+### WINDOWS AND WORKSPACES ###
+##############################
+
+# See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
+# See https://wiki.hyprland.org/Configuring/Workspace-Rules/ for workspace rules
+
+# Example windowrule
+# windowrule = float,class:^(kitty)$,title:^(kitty)$
+
+# Ignore maximize requests from apps. You'll probably like this.
+windowrule = suppressevent maximize, class:.*
+
+# Fix some dragging issues with XWayland
+windowrule = nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0
+    '';
+  };
+}
