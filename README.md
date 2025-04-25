@@ -5,22 +5,22 @@ compliance and a few other things mostly hindered by my lack of understanding. T
 a somewhat sensible configuration that I can deploy to my laptop(s), desktop, and homelab.
 
 # Goals, features, wishlist?
-- [ ] Flakes
-- [ ] Impermanent [1] [2] [3] [5]
-- [ ] btrfs [4] [5]
-- [ ] encrypted (aside from headless systems)
+- [X] Flakes
+- [X] Impermanent [1] [2] [3] [5]
+- [X] btrfs [4] [5]
+- [X] encrypted (aside from headless systems)
   - [ ] eventually a yubikey or similar solution for encrypting headless systems
-- [ ] disko disk configuration [5]
-- [ ] home manager
+- [X] disko disk configuration [5]
+- [X] home manager
 - [ ] fish shell
-- [ ] tailscale
+- [X] tailscale
 - [ ] backups (either borg or restic)
 - [ ] Neovim-centric
 - [ ] [agenix](https://github.com/ryantm/agenix) for secrets management (maybe [sops-nix](https://github.com/Mic92/sops-nix))
-- [ ] Wayland / Hyprland
-  - [ ] Wofi
-  - [ ] Waybar
-  - [ ] Dunst
+- [X] Wayland / Hyprland (needs more configuration but is there)
+  - [X] Wofi
+  - [X] Waybar
+  - [X] Dunst
 
 [1]: https://github.com/nix-community/impermanence
 [2]: https://grahamc.com/blog/erase-your-darlings/
@@ -85,3 +85,4 @@ Services ran:
 - [workflow's dotfiles](https://github.com/workflow/dotfiles)
 - [basic setup forom JackTheMico](https://github.com/JackTheMico/nixos-impermanent)
 - [another small blog on nixos](https://guekka.github.io/)
+- [Impermanence what to save command](https://www.reddit.com/r/NixOS/comments/1d1apm0/comment/l5tgbwz/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button) `sudo fd --one-file-system --base-directory / --type f --hidden --exclude "{tmp,etc/passwd}"`
