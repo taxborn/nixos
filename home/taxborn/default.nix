@@ -1,5 +1,4 @@
 {
-  lib,
   pkgs,
   inputs,
   ...
@@ -9,12 +8,15 @@
   imports = [
     inputs.impermanence.nixosModules.home-manager.impermanence
     ../common
-    ../features/cli
-    ../features/code/zed.nix
-    ../features/wm/hypr
     ./git.nix
     ./firefox.nix
   ];
+
+  features = {
+    cli.fish.enable = true;
+    wm.hyprland.enable = true;
+    terminal.ghostty.enable = true;
+  };
 
   home.persistence."/persist/home/taxborn" = {
     directories = [

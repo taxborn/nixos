@@ -24,4 +24,6 @@
       "taxborn" = import ../../../home/taxborn;
     };
   };
+
+  programs.fish.enable = true;
 }

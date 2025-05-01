@@ -26,6 +26,8 @@
     noto-fonts-cjk-sans # or serif?
   ];
 
+  users.defaultUserShell = pkgs.fish;
+
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
