@@ -28,6 +28,13 @@
 	        nixos-hardware.nixosModules.dell-xps-15-9520
         ];
       };
+
+      uranium = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        modules = [
+	        ./hosts/uranium
+        ];
+      };
     };
   };
 }
