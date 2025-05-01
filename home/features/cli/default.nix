@@ -43,6 +43,12 @@
       "border" = "#313244";
       "label" = "#cdd6f4";
     };
+    defaultOptions = [
+      "--preview='bat --color=always -n {}'"
+      "--bind 'ctrl-/:toggle-preview'"
+    ];
+    defaultCommand = "fd --type f --exclude .git --follow --hidden";
+    changeDirWidgetCommand = "fd --type d --exclude .git --follow --hidden";
   };
 
   programs.bat.enable = true;

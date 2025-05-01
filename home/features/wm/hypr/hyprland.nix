@@ -20,6 +20,14 @@ in
     services.dunst.enable = true;
 
     home.packages = with pkgs; [
+      grim
+      hyprlock
+      slurp
+      waypipe
+      pavucontrol
+      wf-recorder
+      wl-mirror
+      ydotool
       brightnessctl
       wl-clipboard
     ];

@@ -18,6 +18,7 @@ in
         set -x NIX_LOG info
         set -x TERMINAL ghostty
         set -x EDITOR nvim
+        set -x FISH_GREETING
 
         if test (tty) = "/dev/tty1"
           exec Hyprland &> /dev/null

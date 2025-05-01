@@ -21,7 +21,7 @@
         modules-right = [
           "tray"
           "network"
-          "pipewire"
+          "pulseaudio"
           "battery"
         ];
         clock = {
@@ -74,16 +74,45 @@
       };
     };
     style = ''
+      @define-color rosewater #f5e0dc;
+      @define-color flamingo #f2cdcd;
+      @define-color pink #f5c2e7;
+      @define-color mauve #cba6f7;
+      @define-color red #f38ba8;
+      @define-color maroon #eba0ac;
+      @define-color peach #fab387;
+      @define-color yellow #f9e2af;
+      @define-color green #a6e3a1;
+      @define-color teal #94e2d5;
+      @define-color sky #89dceb;
+      @define-color sapphire #74c7ec;
+      @define-color blue #89b4fa;
+      @define-color lavender #b4befe;
+      @define-color text #cdd6f4;
+      @define-color subtext1 #bac2de;
+      @define-color subtext0 #a6adc8;
+      @define-color overlay2 #9399b2;
+      @define-color overlay1 #7f849c;
+      @define-color overlay0 #6c7086;
+      @define-color surface2 #585b70;
+      @define-color surface1 #45475a;
+      @define-color surface0 #313244;
+      @define-color base #1e1e2e;
+      @define-color mantle #181825;
+      @define-color crust #11111b;
+
       * {
-          /* `otf-font-awesome` is required to be installed for icons */
-          font-family: "JetBrainsMonoNL Nerd Font Mono", FontAwesome, Helvetica, Arial, sans-serif;
-          font-size: 12px;
+          border: none;
+          border-radius: 0;
+          font-family: "JetBrainsMonoNL Nerd Font Mono";
+          font-weight: 600;
+          font-size: 14px;
       }
 
       window#waybar {
-          background-color: rgba(43, 48, 59, 0.5);
-          border-bottom: 3px solid rgba(100, 114, 125, 0.5);
-          color: #ffffff;
+          background-color: alpha(@base, 0.9);
+          border: 2px solid alpha(@lavender, 0.9);
+          color: @text;
           transition-property: background-color;
           transition-duration: .5s;
       }
@@ -97,18 +126,9 @@
           background-color: transparent;
       }
       window#waybar.solo {
-          background-color: #FFFFFF;
+          background-color: @text;
       }
       */
-
-      window#waybar.termite {
-          background-color: #3F3F3F;
-      }
-
-      window#waybar.chromium {
-          background-color: #000000;
-          border: none;
-      }
 
       button {
           /* Use box-shadow instead of border so the text isn't offset */
@@ -121,22 +141,22 @@
       /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
       button:hover {
           background: inherit;
-          box-shadow: inset 0 -3px #ffffff;
+          box-shadow: inset 0 -3px @lavender;
       }
 
       /* you can set a style on hover for any module like this */
       #pulseaudio:hover {
-          background-color: #a37800;
+          background-color: @lavender;
       }
 
       #workspaces button {
           padding: 0 5px;
           background-color: transparent;
-          color: #ffffff;
+          color: @text;
       }
 
       #workspaces button:hover {
-          background: rgba(0, 0, 0, 0.2);
+          background: alpha(@lavender, 0.3);
       }
 
       #workspaces button.focused {
@@ -145,7 +165,7 @@
       }
 
       #workspaces button.urgent {
-          background-color: #eb4d4b;
+          background-color: @red;
       }
 
       #mode {
@@ -171,7 +191,7 @@
       #power-profiles-daemon,
       #mpd {
           padding: 0 10px;
-          color: #ffffff;
+          color: @text;
       }
 
       #window,
@@ -190,30 +210,33 @@
       }
 
       #clock {
-          background-color: #64727D;
+      border-top: 2px solid @lavender;
+      border-bottom: 2px solid @lavender;
+          background-color: @overlay2;
+          color: @base;
       }
 
       #battery {
-          background-color: #ffffff;
-          color: #000000;
+          background-color: @text;
+          color: @base;
       }
 
       #battery.charging, #battery.plugged {
-          color: #ffffff;
-          background-color: #26A65B;
+          color: @text;
+          background-color: @green;
       }
 
       @keyframes blink {
           to {
-              background-color: #ffffff;
-              color: #000000;
+              background-color: @text;
+              color: @base;
           }
       }
 
       /* Using steps() instead of linear as a timing function to limit cpu usage */
       #battery.critical:not(.charging) {
-          background-color: #f53c3c;
-          color: #ffffff;
+          background-color: @red;
+          color: @text;
           animation-name: blink;
           animation-duration: 0.5s;
           animation-timing-function: steps(12);
@@ -221,62 +244,43 @@
           animation-direction: alternate;
       }
 
-      #power-profiles-daemon {
-          padding-right: 15px;
-      }
-
-      #power-profiles-daemon.performance {
-          background-color: #f53c3c;
-          color: #ffffff;
-      }
-
-      #power-profiles-daemon.balanced {
-          background-color: #2980b9;
-          color: #ffffff;
-      }
-
-      #power-profiles-daemon.power-saver {
-          background-color: #2ecc71;
-          color: #000000;
-      }
-
-      label:focus {
-          background-color: #000000;
-      }
-
       #cpu {
-          background-color: #2ecc71;
-          color: #000000;
+            border-top: 2px solid @lavender;
+            border-bottom: 2px solid @lavender;
+          background-color: @sky;
+          color: @base;
       }
 
       #memory {
-          background-color: #9b59b6;
+      border-top: 2px solid @lavender;
+      border-bottom: 2px solid @lavender;
+          background-color: @peach;
+          color: @base;
       }
 
       #disk {
           background-color: #964B00;
       }
 
-      #backlight {
-          background-color: #90b1b1;
-      }
-
       #network {
-          background-color: #2980b9;
+          background-color: @blue;
+          color: @base;
+          border-top: 2px solid @lavender;
+          border-bottom: 2px solid @lavender;
       }
 
       #network.disconnected {
-          background-color: #f53c3c;
+          background-color: @red;
       }
 
       #pulseaudio {
-          background-color: #f1c40f;
-          color: #000000;
+          background-color: @lavender;
+          color: @base;
       }
 
       #pulseaudio.muted {
-          background-color: #90b1b1;
-          color: #2a5c45;
+          background-color: @overlay1;
+          color: @base;
       }
 
       #wireplumber {
@@ -292,14 +296,6 @@
           background-color: #66cc99;
           color: #2a5c45;
           min-width: 100px;
-      }
-
-      #custom-media.custom-spotify {
-          background-color: #66cc99;
-      }
-
-      #custom-media.custom-vlc {
-          background-color: #ffa000;
       }
 
       #temperature {
