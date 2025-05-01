@@ -5,16 +5,15 @@
 { inputs, config, lib, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      inputs.disko.nixosModules.default
-      inputs.impermanence.nixosModules.impermanence
-      inputs.home-manager.nixosModules.default
+  imports = [ # Include the results of the hardware scan.
+    inputs.disko.nixosModules.default
+    inputs.impermanence.nixosModules.impermanence
+    inputs.home-manager.nixosModules.default
 
-      ../common
-      ./hardware-configuration.nix
-      ./disko.nix
-    ];
+    ../common
+    ./hardware-configuration.nix
+    ./disko.nix
+  ];
 
   networking.hostName = "uranium";
   programs.steam.enable = true;

@@ -1,16 +1,15 @@
 { config, lib, pkgs, inputs, ... }:
 
 {
-  imports =
-    [
-      inputs.disko.nixosModules.default
-      inputs.impermanence.nixosModules.impermanence
-      inputs.home-manager.nixosModules.default
+  imports = [
+    inputs.disko.nixosModules.default
+    inputs.impermanence.nixosModules.impermanence
+    inputs.home-manager.nixosModules.default
 
-      ../common
-      ./hardware-configuration.nix
-      ./disko.nix
-    ];
+    ../common
+    ./hardware-configuration.nix
+    ./disko.nix
+  ];
 
   networking.hostName = "tungsten";
   programs.steam.enable = true;

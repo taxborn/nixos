@@ -18,22 +18,17 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
-  outputs = { nixpkgs, nixos-hardware, ... } @ inputs:
-  {
+  outputs = { nixpkgs, nixos-hardware, ... }@inputs: {
     nixosConfigurations = {
       tungsten = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
-        modules = [
-	        ./hosts/tungsten
-	        nixos-hardware.nixosModules.dell-xps-15-9520
-        ];
+        modules =
+          [ ./hosts/tungsten nixos-hardware.nixosModules.dell-xps-15-9520 ];
       };
 
       uranium = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
-        modules = [
-	        ./hosts/uranium
-        ];
+        modules = [ ./hosts/uranium ];
       };
     };
   };

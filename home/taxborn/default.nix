@@ -5,11 +5,11 @@
     inputs.impermanence.nixosModules.home-manager.impermanence
     ../common
     ../features/cli
+    ../features/code/zed.nix
     ../features/wm/hypr
     ./git.nix
     ./firefox.nix
   ];
-
 
   home.persistence."/persist/home/taxborn" = {
     directories = [
@@ -31,9 +31,7 @@
     allowOther = true;
   };
 
-  home.packages = with pkgs; [
-    nerd-fonts.jetbrains-mono
-  ];
+  home.packages = with pkgs; [ nerd-fonts.jetbrains-mono ];
 
   programs.home-manager.enable = true;
 }

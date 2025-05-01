@@ -5,7 +5,8 @@
     disk = {
       main = {
         type = "disk";
-        device = "/dev/disk/by-id/nvme-PC801_NVMe_SK_hynix_1TB____SSB6N580011606E0S";
+        device =
+          "/dev/disk/by-id/nvme-PC801_NVMe_SK_hynix_1TB____SSB6N580011606E0S";
         content = {
           type = "gpt";
           partitions = {
@@ -37,27 +38,17 @@
                   subvolumes = {
                     "/root" = {
                       mountpoint = "/";
-                      mountOptions = [
-                        "compress=zstd"
-                        "subvol=root"
-                        "noatime"
-                      ];
+                      mountOptions =
+                        [ "compress=zstd" "subvol=root" "noatime" ];
                     };
                     "/nix" = {
                       mountpoint = "/nix";
-                      mountOptions = [
-                        "compress=zstd"
-                        "subvol=nix"
-                        "noatime"
-                      ];
+                      mountOptions = [ "compress=zstd" "subvol=nix" "noatime" ];
                     };
                     "/persist" = {
                       mountpoint = "/persist";
-                      mountOptions = [
-                        "compress=zstd"
-                        "subvol=persist"
-                        "noatime"
-                      ];
+                      mountOptions =
+                        [ "compress=zstd" "subvol=persist" "noatime" ];
                     };
                   };
                 };
