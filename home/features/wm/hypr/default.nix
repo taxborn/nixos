@@ -1,12 +1,19 @@
 { pkgs, ... }:
 
 {
-  imports =
-    [ ./hyprland.nix ./waybar.nix ./wofi.nix ../../terminal/ghostty.nix ];
+  imports = [
+    ./hyprland.nix
+    ./waybar.nix
+    ./wofi.nix
+    ../../terminal/ghostty.nix
+  ];
 
   services.dunst.enable = true;
 
-  home.packages = with pkgs; [ brightnessctl wl-clipboard ];
+  home.packages = with pkgs; [
+    brightnessctl
+    wl-clipboard
+  ];
 
   home.sessionVariables = {
     EDITOR = "nvim";
