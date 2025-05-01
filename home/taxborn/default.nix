@@ -3,16 +3,16 @@
 {
   imports = [
     inputs.impermanence.nixosModules.home-manager.impermanence
-    ./hyprland.nix
+    ../common
+    ../features/cli
+    ../features/wm/hypr
     ./git.nix
+    ./firefox.nix
   ];
 
-  home.stateVersion = "24.11";
 
   home.persistence."/persist/home/taxborn" = {
     directories = [
-      ".mozilla/firefox"
-      ".cache/mozilla/firefox"
       "Downloads"
       "Dev"
       "Music"
@@ -21,6 +21,11 @@
       "Videos"
       ".gnupg"
       ".ssh"
+      ".local/share/zed"
+      {
+        directory = ".local/share/Steam";
+        method = "symlink";
+      }
     ];
     # files = [ ];
     allowOther = true;
@@ -30,8 +35,5 @@
     nerd-fonts.jetbrains-mono
   ];
 
-  programs = {
-    home-manager.enable = true; # allow home-manager to manage itself?
-    firefox.enable = true;
-  };
+  programs.home-manager.enable = true;
 }
