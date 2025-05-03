@@ -1,7 +1,5 @@
 { ... }:
 
 {
-  imports = [
-    ./hypr/hyprland.nix
-  ];
+  imports = [ ./hypr/hyprland.nix ];
 }

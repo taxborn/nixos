@@ -1,10 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  inputs,
-  ...
-}:
+{ config, lib, pkgs, inputs, ... }:
 
 {
   imports = [
@@ -20,9 +14,8 @@
   networking.hostName = "tungsten";
 
   home-manager = {
-    users = {
-      "taxborn" = import ../../home/uranium;
-    };
+    users = { "taxborn" = import ../../home/tungsten; };
+    extraSpecialArgs = { hostname = "tungsten"; };
   };
 
   system.stateVersion = "24.11"; # Did you read the comment?

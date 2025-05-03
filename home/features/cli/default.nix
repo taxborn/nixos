@@ -1,9 +1,7 @@
 { pkgs, ... }:
 
 {
-  imports = [
-    ./fish.nix
-  ];
+  imports = [ ./fish.nix ];
 
   programs.zoxide = {
     enable = true;
@@ -13,23 +11,14 @@
   programs.yazi = {
     enable = true;
     enableFishIntegration = true;
-    settings = {
-      manager = {
-        show_hidden = true;
-      };
-    };
+    settings = { manager = { show_hidden = true; }; };
   };
 
   programs.eza = {
     enable = true;
     enableFishIntegration = true;
     enableBashIntegration = true;
-    extraOptions = [
-      "-l"
-      "--icons"
-      "--git"
-      "-a"
-    ];
+    extraOptions = [ "-l" "--icons" "--git" "-a" ];
   };
 
   programs.fzf = {
@@ -63,13 +52,5 @@
 
   programs.bat.enable = true;
 
-  home.packages = with pkgs; [
-    coreutils
-    fd
-    btop
-    jq
-    procs
-    ripgrep
-    zip
-  ];
+  home.packages = with pkgs; [ coreutils fd btop jq procs ripgrep zip ];
 }

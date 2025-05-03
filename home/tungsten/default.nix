@@ -1,9 +1,7 @@
 { ... }:
 
 {
-  imports = [
-    ../common
-  ];
+  imports = [ ../common ];
 
   features = {
     cli.fish.enable = true;

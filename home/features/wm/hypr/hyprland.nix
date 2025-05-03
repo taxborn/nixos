@@ -1,20 +1,18 @@
-{
-  pkgs,
-  config,
-  lib,
-  ...
-}:
+{ pkgs, config, lib, hostname, ... }:
 with lib;
 let
   cfg = config.features.wm.hyprland;
-in
-{
+in {
   imports = [
     ./waybar.nix
     ./wofi.nix
+
+    # setup some per-device settings
+    (if hostname == "uranium" then ../../../uranium/hyprland.nix else ../../../tungsten/hyprland.nix)
   ];
 
-  options.features.wm.hyprland.enable = mkEnableOption "enable hyprland integration";
+  options.features.wm.hyprland.enable =
+    mkEnableOption "enable hyprland integration";
 
   config = mkIf cfg.enable {
     services.dunst.enable = true;
@@ -83,27 +81,13 @@ in
           "col.inactive_border" = "rgba(1e1e2eff)";
           layout = "dwindle";
         };
-        monitor = [
-          "DP-5,2560x1440@144,0x0,1"
-          "HDMI-A-5,1920x1080@60,2560x320,1"
-        ];
 
-        xwayland = {
-          force_zero_scaling = true;
-        };
+        xwayland = { force_zero_scaling = true; };
 
-        exec-once = [
-          "waybar"
-          "ghostty"
-          "firefox"
-          "dunst"
-        ];
+        exec-once = [ "waybar" "ghostty" "firefox" "dunst" ];
 
-        env = [
-          "XCURSOR_SIZE,32"
-          "WLR_NO_HARDWARE_CURSORS,1"
-          "GTK_THEME,Dracula"
-        ];
+        env =
+          [ "XCURSOR_SIZE,32" "WLR_NO_HARDWARE_CURSORS,1" "GTK_THEME,Dracula" ];
 
         input = {
           kb_layout = "us";
@@ -116,9 +100,7 @@ in
 
           sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
 
-          touchpad = {
-            natural_scroll = true;
-          };
+          touchpad = { natural_scroll = true; };
         };
 
         decoration = {
@@ -159,9 +141,7 @@ in
 
         master = { };
 
-        gestures = {
-          workspace_swipe = false;
-        };
+        gestures = { workspace_swipe = false; };
 
         "$mainMod" = "SUPER";
 

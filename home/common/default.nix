@@ -19,6 +19,8 @@
     obsidian
   ];
 
+  programs = { command-not-found.enable = true; };
+
   features = {
     cli.fish.enable = true;
     wm.hyprland.enable = true;
