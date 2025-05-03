@@ -40,12 +40,8 @@
   };
 
   home-manager = {
-    users = {
-      "taxborn" = import ../../home/uranium;
-    };
-    extraSpecialArgs = {
-      hostname = "uranium";
-    };
+    users = { "taxborn" = import ../../home/uranium; };
+    extraSpecialArgs = { hostname = "uranium"; };
   };
 
   system.stateVersion = "24.11"; # Did you read the comment?

@@ -1,10 +1,9 @@
 { config, lib, ... }:
 with lib;
-let
-  cfg = config.features.cli.fish;
-in
-{
-  options.features.cli.fish.enable = mkEnableOption "enable extended fish configuration";
+let cfg = config.features.cli.fish;
+in {
+  options.features.cli.fish.enable =
+    mkEnableOption "enable extended fish configuration";
 
   config = mkIf cfg.enable {
     home.persistence."/persist/home/taxborn" = {
@@ -22,9 +21,10 @@ in
         bind ctrl-o 'yazi'
       '';
       shellAbbrs = {
-        "rb" = "sudo nixos-rebuild switch --flake ~/Dev/Projects/nixos-configuration";
-        "impermanence" =
-          ''sudo fd --one-file-system --base-directory / --type f --hidden --exclude "{tmp,etc/passwd}"'';
+        "rb" =
+          "sudo nixos-rebuild switch --flake ~/Dev/Projects/nixos-configuration";
+        "impermanence" = ''
+          sudo fd --one-file-system --base-directory / --type f --hidden --exclude "{tmp,etc/passwd}"'';
         "ls" = "eza";
         "grep" = "rg";
         "ps" = "procs";

@@ -13,17 +13,8 @@
           "hyprland/workspaces"
           "hyprland/submap" # ???
         ];
-        modules-center = [
-          "cpu"
-          "memory"
-          "clock"
-        ];
-        modules-right = [
-          "tray"
-          "network"
-          "pulseaudio"
-          "battery"
-        ];
+        modules-center = [ "cpu" "memory" "clock" ];
+        modules-right = [ "tray" "network" "pulseaudio" "battery" ];
         clock = {
           interval = 1;
           format = "{:%Y-%m-%d %H:%M:%S}";
@@ -34,9 +25,7 @@
                           <tt><small>{calendar}</small></tt>
             	    '';
         };
-        cpu = {
-          format = "  {usage}%";
-        };
+        cpu = { format = "  {usage}%"; };
         memory = {
           format = "  {}%";
           interval = 5;
@@ -44,18 +33,7 @@
         battery = {
           bat = "BAT0";
           interval = 10;
-          format-icons = [
-            "󰁺"
-            "󰁻"
-            "󰁼"
-            "󰁽"
-            "󰁾"
-            "󰁿"
-            "󰂀"
-            "󰂁"
-            "󰂂"
-            "󰁹"
-          ];
+          format-icons = [ "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
           format = "{icon} {capacity}%";
           format-charging = "󰂄 {capacity}%";
           onclick = "";
@@ -222,7 +200,7 @@
       }
 
       #battery.charging, #battery.plugged {
-          color: @text;
+          color: @base;
           background-color: @green;
       }
 
@@ -304,10 +282,6 @@
 
       #temperature.critical {
           background-color: #eb4d4b;
-      }
-
-      #tray {
-          background-color: #2980b9;
       }
 
       #tray > .passive {
