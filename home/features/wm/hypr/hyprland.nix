@@ -1,14 +1,16 @@
 { pkgs, config, lib, hostname, ... }:
 with lib;
-let
-  cfg = config.features.wm.hyprland;
+let cfg = config.features.wm.hyprland;
 in {
   imports = [
     ./waybar.nix
     ./wofi.nix
 
     # setup some per-device settings
-    (if hostname == "uranium" then ../../../uranium/hyprland.nix else ../../../tungsten/hyprland.nix)
+    (if hostname == "uranium" then
+      ../../../uranium/hyprland.nix
+    else
+      ../../../tungsten/hyprland.nix)
   ];
 
   options.features.wm.hyprland.enable =
@@ -37,22 +39,29 @@ in {
       wl-clipboard
     ];
 
-    home.sessionVariables = {
-      EDITOR = "nvim";
-      TERMINAL = "ghostty";
-      GBM_BACKEND = "nvidia-drm";
-      __GLX_VENDOR_LIBRARY_NAME = "nvidia";
-      LIBVA_DRIVER_NAME = "nvidia"; # hardware acceleration
-      __GL_VRR_ALLOWED = "1";
-      WLR_NO_HARDWARE_CURSORS = "1";
-      WLR_RENDERER_ALLOW_SOFTWARE = "1";
-      CLUTTER_BACKEND = "wayland";
-      WLR_RENDERER = "vulkan";
+    home.sessionVariables = lib.mkMerge [
+      {
+        EDITOR = "nvim";
+        TERMINAL = "ghostty";
+        NIXOS_OZONE_WL = "1";
+        MOZ_ENABLE_WAYLAND = "1";
+        QT_QPA_PLATFORM = "wayland";
+        SDL_VIDEODRIVER = "wayland";
+        XDG_CURRENT_DESKTOP = "Hyprland";
+        XDG_SESSION_DESKTOP = "Hyprland";
+        XDG_SESSION_TYPE = "wayland";
+      }
+      (lib.optionalAttrs (hostname == "uranium") { WLR_RENDERER = "vulkan"; })
+      (lib.optionalAttrs (hostname == "tungsten") {
+        GBM_BACKEND = "nvidia-drm";
+        GDK_BACKEND = "wayland";
+        WLR_NO_HARDWARE_CURSORS = "1";
+        __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+        LIBVA_DRIVER_NAME = "nvidia";
+        __GL_VRR_ALLOWED = "1";
+      })
+    ];
 
-      XDG_CURRENT_DESKTOP = "Hyprland";
-      XDG_SESSION_DESKTOP = "Hyprland";
-      XDG_SESSION_TYPE = "wayland";
-    };
     wayland.windowManager.hyprland = {
       enable = true;
       package = null;
