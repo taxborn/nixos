@@ -19,7 +19,9 @@
     obsidian
   ];
 
-  programs = { command-not-found.enable = true; };
+  programs = {
+    command-not-found.enable = true;
+  };
 
   features = {
     cli.fish.enable = true;
@@ -32,6 +34,7 @@
     directories = [
       "Downloads"
       "Dev"
+      "Games"
       "Music"
       "Pictures"
       "Documents"
@@ -40,9 +43,33 @@
       ".ssh"
       ".local/share/zed"
       ".config/obsidian"
+      ".cache/spotify"
+      ".config/spotify"
+      ".config/discord"
+      ".local/share/PrismLauncher"
+      {
+        directory = ".local/share/vulkan";
+        method = "symlink";
+      }
+      {
+        directory = ".local/share/hyprland";
+        method = "symlink";
+      }
+      {
+        directory = ".cache/mesa_shader_cache_db";
+        method = "symlink";
+      }
+      {
+        directory = ".cache/radv_builtin_shaders";
+        method = "symlink";
+      }
       {
         directory = ".local/share/Steam";
         method = "symlink";
+      }
+      {
+        method = "symlink";
+        directory = ".steam";
       }
     ];
     # files = [ ];

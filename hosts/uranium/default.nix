@@ -27,23 +27,25 @@
   };
   security.rtkit.enable = true;
 
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-    extraPackages = with pkgs; [
-      libva
-      libvdpau
-      vaapiVdpau
-      vulkan-loader
-      vulkan-tools
-      vulkan-validation-layers
-      mesa # For RADV (recommended over AMDVLK)
-    ];
+  hardware = {
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+    };
+
+    amdgpu.amdvlk = {
+      enable = true;
+      support32Bit.enable = true;
+    };
   };
 
   home-manager = {
-    users = { "taxborn" = import ../../home/uranium; };
-    extraSpecialArgs = { hostname = "uranium"; };
+    users = {
+      "taxborn" = import ../../home/uranium;
+    };
+    extraSpecialArgs = {
+      hostname = "uranium";
+    };
   };
 
   system.stateVersion = "24.11"; # Did you read the comment?

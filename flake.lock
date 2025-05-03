@@ -1,5 +1,26 @@
 {
   "nodes": {
+    "catppuccin": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1721305908,
+        "narHash": "sha256-Ib/YsWSrq5RHX6gMET9CGnmibyFtwvwLJhVQKzwCvAg=",
+        "ref": "main",
+        "rev": "23303a17e434c21421953cefca86315d04b06247",
+        "revCount": 51,
+        "type": "git",
+        "url": "https://codeberg.org/matthew/nix-catppuccin.git"
+      },
+      "original": {
+        "ref": "main",
+        "type": "git",
+        "url": "https://codeberg.org/matthew/nix-catppuccin.git"
+      }
+    },
     "disko": {
       "inputs": {
         "nixpkgs": [
@@ -89,6 +110,7 @@
     },
     "root": {
       "inputs": {
+        "catppuccin": "catppuccin",
         "disko": "disko",
         "home-manager": "home-manager",
         "impermanence": "impermanence",
