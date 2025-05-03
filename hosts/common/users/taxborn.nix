@@ -20,9 +20,6 @@
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     useUserPackages = true;
-    users = {
-      "taxborn" = import ../../../home/taxborn;
-    };
   };
 
   programs.fish.enable = true;

@@ -18,11 +18,12 @@
   ];
 
   networking.hostName = "tungsten";
-  programs.steam.enable = true;
-  nixpkgs.config.allowUnfree = true;
 
-  programs.hyprland.enable = true;
-  programs.fuse.userAllowOther = true;
+  home-manager = {
+    users = {
+      "taxborn" = import ../../home/uranium;
+    };
+  };
 
   system.stateVersion = "24.11"; # Did you read the comment?
 }

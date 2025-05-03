@@ -13,6 +13,12 @@
   time.timeZone = "America/Chicago";
   i18n.defaultLocale = "en_US.UTF-8";
 
+  programs.steam.enable = true;
+  nixpkgs.config.allowUnfree = true;
+
+  programs.hyprland.enable = true;
+  programs.fuse.userAllowOther = true;
+
   environment.systemPackages = with pkgs; [
     neovim
     tmux

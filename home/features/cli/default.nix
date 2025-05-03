@@ -10,6 +10,16 @@
     enableFishIntegration = true;
   };
 
+  programs.yazi = {
+    enable = true;
+    enableFishIntegration = true;
+    settings = {
+      manager = {
+        show_hidden = true;
+      };
+    };
+  };
+
   programs.eza = {
     enable = true;
     enableFishIntegration = true;

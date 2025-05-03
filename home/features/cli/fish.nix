@@ -11,6 +11,11 @@ in
   options.features.cli.fish.enable = mkEnableOption "enable extended fish configuration";
 
   config = mkIf cfg.enable {
+    home.persistence."/persist/home/taxborn" = {
+      directories = [
+        ".cache/fish"
+      ];
+    };
     programs.fish = {
       enable = true;
       loginShellInit = ''
@@ -23,10 +28,12 @@ in
         if test (tty) = "/dev/tty1"
           exec Hyprland &> /dev/null
         end
+
+        bind ctrl-o 'yazi'
       '';
       shellAbbrs = {
         "rb" = "sudo nixos-rebuild switch --flake ~/Dev/Projects/nixos-configuration";
-        "what-changed" =
+        "impermanence" =
           "sudo fd --one-file-system --base-directory / --type f --hidden --exclude \"{tmp,etc/passwd}\"";
         "ls" = "eza";
         "grep" = "rg";
