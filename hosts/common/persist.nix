@@ -4,6 +4,7 @@
     directories = [
       "/etc/nixos"
       "/var/log"
+      "/var/lib/bluetooth"
       "/var/lib/tailscale"
       "/var/db/sudo/lectured" # save who had the `sudo` prompt
       "/var/lib/nixos"
