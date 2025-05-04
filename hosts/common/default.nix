@@ -26,17 +26,26 @@
     dedicatedServer.openFirewall = true;
     gamescopeSession.enable = true;
 
-
     extraPackages = with pkgs; [
       gamescope
       xwayland-run
     ];
     extraCompatPackages = with pkgs; [ proton-ge-bin ];
   };
-
-  programs.gamescope.args = [
-  "--output-name DP-5"
+  programs.steam.gamescopeSession.env = {
+    CONNECTOR = "*,DP-5";
+  };
+  programs.steam.gamescopeSession.args = [
+    "-w 2560"
+    "-h 1440"
+    "-W 2560"
+    "-H 1440"
+    "-r 144"
   ];
+
+  programs.gamescope.enable = true;
+  programs.gamemode.enable = true;
+  programs.gamescope.capSysNice = false;
 
   programs.steam.package =
     let
@@ -68,7 +77,6 @@
       override = f: x-wrapped (pkgs.steam.override f);
     };
 
-  programs.gamemode.enable = true;
 
   programs.hyprland.enable = true;
   programs.fuse.userAllowOther = true;
@@ -89,7 +97,6 @@
   environment.systemPackages = with pkgs; [
     vim
     neovim # TODO: move to home
-    tmux # TODO: move to home
     discord
     wget
     ntfs3g
