@@ -19,7 +19,9 @@
     obsidian
   ];
 
-  programs = { command-not-found.enable = true; };
+  programs = {
+    command-not-found.enable = true;
+  };
 
   features = {
     cli.fish.enable = true;

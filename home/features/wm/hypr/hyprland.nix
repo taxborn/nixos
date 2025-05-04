@@ -1,22 +1,30 @@
-{ pkgs, config, lib, hostname, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  hostname,
+  ...
+}:
 with lib;
-let cfg = config.features.wm.hyprland;
-in {
+let
+  cfg = config.features.wm.hyprland;
+in
+{
+
+  options.features.wm.hyprland.enable = mkEnableOption "enable hyprland integration";
+
   imports = [
     ./waybar.nix
     ./wofi.nix
+    ./hyprlock.nix
+    ./hyprpaper.nix
 
     # setup some per-device settings
-    (if hostname == "uranium" then
-      ../../../uranium/hyprland.nix
-    else
-      ../../../tungsten/hyprland.nix)
+    (if hostname == "uranium" then ../../../uranium/hyprland.nix else ../../../tungsten/hyprland.nix)
   ];
 
-  options.features.wm.hyprland.enable =
-    mkEnableOption "enable hyprland integration";
-
   config = mkIf cfg.enable {
+
     services.dunst.enable = true;
 
     home.persistence."/persist/home/taxborn" = {
@@ -28,11 +36,11 @@ in {
 
     home.packages = with pkgs; [
       grim
-      hyprlock
       slurp
       waypipe
       pavucontrol
       wf-recorder
+      playerctl
       wl-mirror
       ydotool
       brightnessctl
@@ -91,12 +99,24 @@ in {
           layout = "dwindle";
         };
 
-        xwayland = { force_zero_scaling = true; };
+        xwayland = {
+          force_zero_scaling = true;
+        };
 
-        exec-once = [ "waybar" "ghostty" "firefox" "dunst" ];
+        exec-once = [
+          "waybar"
+          "ghostty"
+          "firefox"
+          "dunst"
+          "hypridle"
+          "hyprpaper"
+        ];
 
-        env =
-          [ "XCURSOR_SIZE,32" "WLR_NO_HARDWARE_CURSORS,1" "GTK_THEME,Dracula" ];
+        env = [
+          "XCURSOR_SIZE,32"
+          "WLR_NO_HARDWARE_CURSORS,1"
+          "GTK_THEME,Dracula"
+        ];
 
         input = {
           kb_layout = "us";
@@ -109,7 +129,9 @@ in {
 
           sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
 
-          touchpad = { natural_scroll = true; };
+          touchpad = {
+            natural_scroll = true;
+          };
         };
 
         decoration = {
@@ -150,7 +172,9 @@ in {
 
         master = { };
 
-        gestures = { workspace_swipe = false; };
+        gestures = {
+          workspace_swipe = false;
+        };
 
         "$mainMod" = "SUPER";
 
@@ -164,6 +188,7 @@ in {
           "$mainMod, V, togglefloating"
           "$mainMod, R, exec, wofi --show drun --allow-images"
           "$mainMod, P, exec, wofi-pass"
+          "$mainMod, L, exec, hyprlock"
           "$mainMod SHIFT, P, pseudo"
           "$mainMod, J, togglesplit"
           "$mainMod, left, movefocus, l"

@@ -4,9 +4,12 @@
   users.users.taxborn = {
     isNormalUser = true;
     # use mkpasswd to generate this
-    hashedPassword =
-      "$y$j9T$2VWEsqoOG56VDQHyZx9xt/$o856/HhLynVydq4FjogVtwtxlQKfvqomLC10xlCUeL1";
-    extraGroups = [ "wheel" "networkmanager" "input" ];
+    hashedPassword = "$y$j9T$2VWEsqoOG56VDQHyZx9xt/$o856/HhLynVydq4FjogVtwtxlQKfvqomLC10xlCUeL1";
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+      "input"
+    ];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMMMcjY+iw91OShWyaLeyVMxWBOEnrvu6a1nW27KIUXr taxborn@tungsten"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICBJ+n5pimZv/vLfmME/UtuGTVLcc+Y2tInvd6H9vx9z taxborn@uranium"
