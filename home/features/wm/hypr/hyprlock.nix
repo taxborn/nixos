@@ -22,19 +22,19 @@
 
 
     listener {
-        timeout = 60                                 # 5min
+        timeout = 300 # 5min
         on-timeout = loginctl lock-session            # lock screen when timeout has passed
     }
 
     listener {
-        timeout = 120                                                     # 5.5min
+        timeout = 600 # 10 min
         on-timeout = hyprctl dispatch dpms off                            # screen off when timeout has passed
         on-resume = hyprctl dispatch dpms on && brightnessctl -r          # screen on when activity is detected after timeout has fired.
     }
 
     listener {
-        timeout = 180                                # 30min
-        on-timeout = systemctl suspend                # suspend pc
+        timeout = 1800    # 30min
+        on-timeout = systemctl suspend     # suspend pc
     }
   '';
 }

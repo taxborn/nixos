@@ -26,12 +26,18 @@
     dedicatedServer.openFirewall = true;
     gamescopeSession.enable = true;
 
+
     extraPackages = with pkgs; [
       gamescope
       xwayland-run
     ];
     extraCompatPackages = with pkgs; [ proton-ge-bin ];
   };
+
+  programs.gamescope.args = [
+  "--output-name DP-5"
+  ];
+
   programs.steam.package =
     let
       x-wrapped =
@@ -87,6 +93,7 @@
     discord
     wget
     ntfs3g
+    obs-studio
     efibootmgr
     fd
     ripgrep

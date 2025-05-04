@@ -1,4 +1,9 @@
-{ inputs, pkgs, ... }:
+{
+  inputs,
+  pkgs,
+  hostname,
+  ...
+}:
 
 {
   imports = [
@@ -6,6 +11,7 @@
 
     ./git.nix
     ./firefox.nix
+    ./gpg.nix
 
     ../features/cli
     ../features/wm

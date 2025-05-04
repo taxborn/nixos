@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 let
-  wallpaper = "~/Pictures/Wallpapers/edennebula.png";
+  wallpaper = "~/Pictures/Wallpapers/abstract-swirls.jpg";
 in
 {
   home.packages = [ pkgs.hyprpaper ];
