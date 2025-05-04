@@ -98,6 +98,8 @@
     vim
     neovim # TODO: move to home
     discord
+    bitwarden
+    bitwarden-cli
     wget
     ntfs3g
     obs-studio
