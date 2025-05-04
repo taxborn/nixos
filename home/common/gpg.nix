@@ -17,12 +17,12 @@
     ];
   };
 
-  home.file.".gpg/gpg-agent.conf".text = ''
+  home.file.".gnupg/gpg-agent.conf".text = ''
     default-cache-ttl 84000
     max-cache-ttl 84000
   '';
 
-  home.file.".gpg/gpg.conf".text = ''
+  home.file.".gnupg/gpg.conf".text = ''
     keyid-format LONG
   '';
 }
