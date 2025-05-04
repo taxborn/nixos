@@ -17,7 +17,7 @@ in
         set -x NIX_LOG info
         set -x TERMINAL ghostty
         set -x EDITOR nvim
-        set -x FISH_GREETING
+        set fish_greeting
 
         bind ctrl-o 'yazi'
       '';
