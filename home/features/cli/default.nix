@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  imports = [ ./fish.nix ];
+  imports = [ ./fish.nix ./tmux.nix ];
 
   programs.zoxide = {
     enable = true;
