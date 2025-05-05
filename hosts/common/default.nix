@@ -5,6 +5,7 @@
     ./nix.nix
     ./boot.nix
     ./persist.nix
+    ./steam.nix
     ./security.nix
 
     ./users/taxborn.nix
@@ -20,63 +21,19 @@
 
   services.fstrim.enable = true;
 
-  programs.steam = {
+  xdg.portal = {
     enable = true;
-    remotePlay.openFirewall = true;
-    dedicatedServer.openFirewall = true;
-    gamescopeSession.enable = true;
-
-    extraPackages = with pkgs; [
-      gamescope
-      xwayland-run
-    ];
-    extraCompatPackages = with pkgs; [ proton-ge-bin ];
+    extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
   };
-  programs.steam.gamescopeSession.env = {
-    CONNECTOR = "*,DP-5";
+
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    jack.enable = true;
   };
-  programs.steam.gamescopeSession.args = [
-    "-w 2560"
-    "-h 1440"
-    "-W 2560"
-    "-H 1440"
-    "-r 144"
-  ];
-
-  programs.gamescope.enable = true;
-  programs.gamemode.enable = true;
-  programs.gamescope.capSysNice = false;
-
-  programs.steam.package =
-    let
-      x-wrapped =
-        steam:
-        pkgs.runCommand "x-run-steam" { inherit (steam) passthru meta; } ''
-          cp -r ${steam} $out
-
-          # $out/share is a symlink to ${steam}/share
-          # but since we need to edit its internals, we need to expand it to a real directory
-          # that can be edited
-
-          # first we need to make sure we can remove it
-          chmod -R +w $out
-
-          # then remove, recreate, and populate it
-          rm $out/share
-          mkdir $out/share
-          cp -r ${steam}/share/* $out/share/
-
-          # and of course, make sure we can edit the desktop file again
-          chmod -R +w $out
-
-          sed -i 's/Exec=steam/Exec=x-run steam/g' $out/share/applications/steam.desktop
-        '';
-    in
-    x-wrapped pkgs.steam
-    // {
-      override = f: x-wrapped (pkgs.steam.override f);
-    };
-
+  security.rtkit.enable = true;
 
   programs.hyprland.enable = true;
   programs.fuse.userAllowOther = true;
@@ -124,6 +81,14 @@
     enableSSHSupport = true;
   };
 
-  services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    settings = {
+      X11Forwarding = true;
+      PermitRootLogin = "no"; # disable root login
+      PasswordAuthentication = false; # disable password login
+    };
+    openFirewall = true;
+  };
   services.tailscale.enable = true;
 }

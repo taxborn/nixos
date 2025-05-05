@@ -24,14 +24,14 @@
   };
 
   outputs =
-    { nixpkgs, nixos-hardware, ... }@inputs:
+    { self, nixpkgs, nixos-hardware, ... }@inputs:
     {
       nixosConfigurations = {
         tungsten = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
           modules = [
             ./hosts/tungsten
-            nixos-hardware.nixosModules.dell-xps-15-9520
+            nixos-hardware.nixosModules.dell-xps-15-9520-nvidia
           ];
         };
 

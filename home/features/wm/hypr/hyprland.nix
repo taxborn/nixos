@@ -24,7 +24,6 @@ in
   ];
 
   config = mkIf cfg.enable {
-
     services.dunst.enable = true;
 
     home.persistence."/persist/home/taxborn" = {
