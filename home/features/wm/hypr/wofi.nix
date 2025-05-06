@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   programs = {
@@ -16,4 +16,8 @@
       };
     };
   };
+
+  home.packages = with pkgs; [
+    wofi-emoji
+  ];
 }

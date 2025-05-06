@@ -180,20 +180,23 @@ in
         bind = [
           "$mainMod, return, exec, ghostty"
           "$mainMod, Escape, exec, wlogout -p layer-shell"
-          "$mainMod, Space, togglefloating"
           "$mainMod, q, killactive"
           "$mainMod, M, exit"
-          "$mainMod, F, fullscreen"
-          "$mainMod, V, togglefloating"
-          "$mainMod, R, exec, wofi --show drun --allow-images"
-          "$mainMod, P, exec, wofi-pass"
+
+          "Alt, Space, exec, wofi --show drun --allow-images"
+          "Alt SHIFT, Space, exec, wofi-emoji"
           "$mainMod, L, exec, hyprlock"
+
+          "$mainMod, Space, togglefloating"
+          "$mainMod, F, fullscreen"
           "$mainMod SHIFT, P, pseudo"
           "$mainMod, J, togglesplit"
-          "$mainMod, left, movefocus, l"
-          "$mainMod, right, movefocus, r"
-          "$mainMod, up, movefocus, u"
-          "$mainMod, down, movefocus, d"
+
+          "$mainMod, H, movefocus, l"
+          "$mainMod, L, movefocus, r"
+          "$mainMod, K, movefocus, u"
+          "$mainMod, J, movefocus, d"
+
           "$mainMod, 1, workspace, 1"
           "$mainMod, 2, workspace, 2"
           "$mainMod, 3, workspace, 3"
@@ -204,6 +207,7 @@ in
           "$mainMod, 8, workspace, 8"
           "$mainMod, 9, workspace, 9"
           "$mainMod, 0, workspace, 10"
+
           "$mainMod SHIFT, 1, movetoworkspace, 1"
           "$mainMod SHIFT, 2, movetoworkspace, 2"
           "$mainMod SHIFT, 3, movetoworkspace, 3"
@@ -214,6 +218,7 @@ in
           "$mainMod SHIFT, 8, movetoworkspace, 8"
           "$mainMod SHIFT, 9, movetoworkspace, 9"
           "$mainMod SHIFT, 0, movetoworkspace, 10"
+
           "$mainMod, mouse_down, workspace, e+1"
           "$mainMod, mouse_up, workspace, e-1"
         ];
