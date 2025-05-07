@@ -24,7 +24,12 @@
   };
 
   outputs =
-    { self, nixpkgs, nixos-hardware, ... }@inputs:
+    {
+      self,
+      nixpkgs,
+      nixos-hardware,
+      ...
+    }@inputs:
     {
       nixosConfigurations = {
         tungsten = nixpkgs.lib.nixosSystem {

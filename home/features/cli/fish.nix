@@ -8,7 +8,13 @@ in
 
   config = mkIf cfg.enable {
     home.persistence."/persist/home/taxborn" = {
-      directories = [ ".cache/fish" ];
+      directories = [
+        ".cache/fish"
+        ".config/fish"
+      ];
+      files = [
+        ".local/share/fish/fish_history"
+      ];
     };
     programs.fish = {
       enable = true;
@@ -28,6 +34,8 @@ in
         "ls" = "eza";
         "grep" = "rg";
         "ps" = "procs";
+        "screen-copy" =
+          "set filename ~/Pictures/screenshot-(date -Is).png && grim -g (slurp) $filename && wl-copy < $filename && notify-send -i $filename 'Screenshot' \"Saved to $filename and copied to clipboard\"";
       };
     };
   };

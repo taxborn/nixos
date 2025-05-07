@@ -13,7 +13,7 @@
     nixfmt-rfc-style
   ];
 
-nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfree = true;
   programs.nix-ld.enable = true;
   programs.nix-ld.package = pkgs.nix-ld-rs;
 

@@ -7,6 +7,7 @@
     ./persist.nix
     ./steam.nix
     ./security.nix
+    ./fonts.nix
 
     ./users/taxborn.nix
   ];
@@ -55,19 +56,10 @@
     vim
     neovim # TODO: move to home
     discord
-    bitwarden
-    bitwarden-cli
     wget
     ntfs3g
     obs-studio
     efibootmgr
-    fd
-    ripgrep
-
-    noto-fonts
-    noto-fonts-extra
-    noto-fonts-emoji
-    noto-fonts-cjk-sans # or serif?
 
     spotify
     prismlauncher

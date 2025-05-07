@@ -12,6 +12,7 @@
     ./git.nix
     ./firefox.nix
     ./gpg.nix
+    ./bitwarden.nix
 
     ../features/cli
     ../features/wm
@@ -20,10 +21,13 @@
   ];
 
   home.packages = with pkgs; [
-    nerd-fonts.jetbrains-mono
-    atkinson-hyperlegible-next
     obsidian
   ];
+
+  home.pointerCursor = {
+    name = "Adwaita";
+    package = pkgs.adwaita-icon-theme;
+  };
 
   programs = {
     command-not-found.enable = true;

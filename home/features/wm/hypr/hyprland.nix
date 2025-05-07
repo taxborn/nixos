@@ -37,6 +37,7 @@ in
       grim
       slurp
       waypipe
+      libnotify
       pavucontrol
       wf-recorder
       playerctl
@@ -186,10 +187,12 @@ in
           "Alt, Space, exec, wofi --show drun --allow-images"
           "Alt SHIFT, Space, exec, wofi-emoji"
           "$mainMod, L, exec, hyprlock"
+          "$mainMod, P, exec, screen-copy" # why tf is this not working
+          "$mainMod, F, exec, firefox"
+          "$mainMod, Z, exec, zeditor"
 
           "$mainMod, Space, togglefloating"
-          "$mainMod, F, fullscreen"
-          "$mainMod SHIFT, P, pseudo"
+          "$mainMod SHIFT, F, fullscreen"
           "$mainMod, J, togglesplit"
 
           "$mainMod, H, movefocus, l"
