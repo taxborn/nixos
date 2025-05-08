@@ -5,24 +5,35 @@
     enable = true;
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
+
     gamescopeSession = {
       enable = true;
       # TODO: idk why but I can't get this to display on my main monitor.
       env = {
-        CONNECTOR = "*,DP-5";
+        # TODO: What would it be for nvidia?
+        WLR_RENDERER = "vulkan";
+        # ENABLE_GAMESCOPE_WSI = "1";
+        # WINE_FULLSCREEN_FSR = "1";
       };
       args = [
-        "-w 2560"
-        "-h 1440"
-        "-W 2560"
-        "-H 1440"
-        "-r 144"
+        "--output-width"
+        "2560"
+        "--output-height"
+        "1440"
+        # "--adaptive-sync"
+        "--steam"
+        "--prefer-output"
+        "DP-5"
+        "--prefer-vk-device"
+        "1002:744c"
       ];
     };
 
     extraPackages = with pkgs; [
       gamescope
       xwayland-run
+      protonup-ng # latest and greatest proton
+      dolphin-emu # mario kart one day?
     ];
     extraCompatPackages = with pkgs; [ proton-ge-bin ];
   };

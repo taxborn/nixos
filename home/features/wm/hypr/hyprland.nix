@@ -89,6 +89,7 @@ in
       };
 
       settings = {
+        "debug:disable_logs" = false;
         general = {
           gaps_in = 4;
           gaps_out = 8;
@@ -179,14 +180,13 @@ in
 
         bind = [
           "$mainMod, return, exec, ghostty"
-          "$mainMod, Escape, exec, wlogout -p layer-shell"
           "$mainMod, q, killactive"
           "$mainMod, M, exit"
 
           "Alt, Space, exec, wofi --show drun --allow-images"
           "Alt SHIFT, Space, exec, wofi-emoji"
           "$mainMod, L, exec, hyprlock"
-          "$mainMod, P, exec, screen-copy" # why tf is this not working
+          "$mainMod, P, exec, filename=~/Pictures/Screenshots/screenshot-$(date -Is).png && grim -g \"$(slurp)\" \"$filename\" && wl-copy < \"$filename\" && notify-send -i \"$filename\" 'Screenshot' \"Saved to $filename and copied to clipboard\""
           "$mainMod, F, exec, firefox"
           "$mainMod, Z, exec, zeditor"
 

@@ -59,6 +59,7 @@
       ".ssh"
       ".local/share/zed"
       ".config/obsidian"
+      ".pki" # is this what zed uses?
       ".cache/spotify"
       ".config/spotify"
       ".config/discord"

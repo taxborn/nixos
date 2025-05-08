@@ -27,6 +27,10 @@
     extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
   };
 
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+  };
+
   services.pipewire = {
     enable = true;
     alsa.enable = true;

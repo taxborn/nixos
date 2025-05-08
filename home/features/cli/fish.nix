@@ -30,12 +30,10 @@ in
       shellAbbrs = {
         "rb" = "sudo nixos-rebuild switch --flake ~/Dev/Projects/nixos-configuration";
         "impermanence" =
-          ''sudo fd --one-file-system --base-directory / --type f --hidden --exclude "{tmp,etc/passwd}"'';
+          ''sudo fd --one-file-system --base-directory / --type f --hidden --exclude "{tmp,etc/passwd,home/taxborn/.cache/nix}"'';
         "ls" = "eza";
         "grep" = "rg";
         "ps" = "procs";
-        "screen-copy" =
-          "set filename ~/Pictures/screenshot-(date -Is).png && grim -g (slurp) $filename && wl-copy < $filename && notify-send -i $filename 'Screenshot' \"Saved to $filename and copied to clipboard\"";
       };
     };
   };
