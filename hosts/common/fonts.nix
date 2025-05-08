@@ -12,6 +12,7 @@
 
       nerd-fonts.jetbrains-mono
       atkinson-hyperlegible-next
+      atkinson-hyperlegible-mono
     ];
 
     fontconfig = {

@@ -33,7 +33,9 @@ in
           edit_prediction_provider = "zed";
         };
         vim_mode = true;
-        ui_font_size = 16;
+        ui_font_size = 15;
+        ui_font_family = "Atkinson Hyperlegible Mono";
+        buffer_font_family = "JetBransMonoNL Nerd Font Mono";
         buffer_font_size = 16;
         languages = {
           Nix = {

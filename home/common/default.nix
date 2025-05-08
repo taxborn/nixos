@@ -14,6 +14,7 @@
     ./bitwarden.nix
 
     ../features/cli
+    ../features/languages
     ../features/wm
     ../features/terminal/ghostty.nix
     ../features/code
