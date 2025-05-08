@@ -40,6 +40,7 @@ in
       libnotify
       pavucontrol
       wf-recorder
+      nautilus
       playerctl
       wl-mirror
       ydotool
