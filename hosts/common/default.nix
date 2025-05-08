@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   imports = [
@@ -52,9 +52,11 @@
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
   services.blueman.enable = true;
 
+  nixpkgs.overlays = [ inputs.rust-overlay.overlays.default ];
   environment.systemPackages = with pkgs; [
     vim
     neovim # TODO: move to home
+    rust-bin.stable.latest.default
     discord
     wget
     ntfs3g

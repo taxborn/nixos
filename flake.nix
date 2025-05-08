@@ -15,6 +15,11 @@
 
     impermanence.url = "github:nix-community/impermanence";
 
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -28,6 +33,7 @@
       self,
       nixpkgs,
       nixos-hardware,
+      rust-overlay,
       ...
     }@inputs:
     {

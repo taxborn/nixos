@@ -40,6 +40,12 @@
     code.zed.enable = true;
   };
 
+  home.sessionVariables = {
+    EDITOR = "nvim";
+    VISUAL = "zed";
+    TERMINAL = "ghostty";
+  };
+
   home.persistence."/persist/home/taxborn" = {
     directories = [
       "Downloads"
