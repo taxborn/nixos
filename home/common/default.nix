@@ -42,7 +42,7 @@
 
   home.sessionVariables = {
     EDITOR = "nvim";
-    VISUAL = "zeditor";
+    VISUAL = "nvim";
     TERMINAL = "ghostty";
   };
 
