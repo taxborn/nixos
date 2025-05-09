@@ -38,8 +38,9 @@
         };
         clock = {
           timezone = "America/Chicago";
-          tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-          format = "{:%d/%m/%Y - %H:%M:%S}";
+          tooltip-format = "<tt><small>{calendar}</small></tt>";
+          format = "{:%Y-%m-%dT%T%Ez}";
+          interval = 5;
         };
         pulseaudio = {
           format = "{icon} {volume}%";

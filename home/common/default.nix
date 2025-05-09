@@ -42,7 +42,7 @@
 
   home.sessionVariables = {
     EDITOR = "nvim";
-    VISUAL = "zed";
+    VISUAL = "zeditor";
     TERMINAL = "ghostty";
   };
 
@@ -59,7 +59,7 @@
       ".ssh"
       ".local/share/zed"
       ".config/obsidian"
-      ".pki" # is this what zed uses?
+      ".pki"
       ".cache/spotify"
       ".config/spotify"
       ".config/discord"
