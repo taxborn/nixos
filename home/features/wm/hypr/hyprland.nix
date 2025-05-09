@@ -142,7 +142,7 @@ in
             render_power = 3;
             scale = 0.97;
           };
-          rounding = 0;
+          rounding = 8;
           blur = {
             enabled = true;
             size = 3;

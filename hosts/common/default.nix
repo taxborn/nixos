@@ -48,7 +48,7 @@
     settings = {
       load = true;
       save = true;
-      vi_mode = true;
+
     };
   };
 
@@ -59,7 +59,6 @@
   nixpkgs.overlays = [ inputs.rust-overlay.overlays.default ];
   environment.systemPackages = with pkgs; [
     vim
-    neovim # TODO: move to home
     rust-bin.stable.latest.default
     discord
     wget

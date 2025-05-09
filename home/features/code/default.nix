@@ -1,5 +1,8 @@
 { ... }:
 
 {
-  imports = [ ./zed.nix ];
+  imports = [
+    ./zed.nix
+    ./neovim.nix
+  ];
 }

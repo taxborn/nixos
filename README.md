@@ -12,7 +12,7 @@ a somewhat sensible configuration that I can deploy to my laptop(s), desktop, an
   - [ ] eventually a yubikey or similar solution for encrypting headless systems
 - [X] disko disk configuration [5]
 - [X] home manager
-- [ ] fish shell
+- [X] fish shell
 - [X] tailscale
 - [ ] backups (either borg or restic)
 - [ ] Neovim-centric
