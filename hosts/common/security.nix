@@ -1,7 +1,5 @@
-{ ... }:
-
+# https://github.com/AltF02/nixdot/blob/5bad7d0f3ce4ca9026ac87eb107d4a999dad96ba/modules/security.nix
 {
-  # https://github.com/AltF02/nixdot/blob/5bad7d0f3ce4ca9026ac87eb107d4a999dad96ba/modules/security.nix
   boot.kernel.sysctl = {
     # The Magic SysRq key is a key combo that allows users connected to the
     # system console of a Linux kernel to perform some low-level commands.

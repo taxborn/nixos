@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   users.users.taxborn = {
@@ -8,6 +8,7 @@
     extraGroups = [
       "wheel"
       "networkmanager"
+      "gamescope"
       "input"
     ];
     openssh.authorizedKeys.keys = [
@@ -24,4 +25,5 @@
   };
 
   programs.fish.enable = true;
+  users.defaultUserShell = pkgs.fish;
 }

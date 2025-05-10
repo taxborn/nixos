@@ -1,5 +1,3 @@
-{ ... }:
-
 {
   # Mount the windows partition, idk if this will ever be useful but why not
   fileSystems."/mnt/windows" = {

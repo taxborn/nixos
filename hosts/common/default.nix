@@ -62,7 +62,6 @@
     rust-bin.stable.latest.default
     discord
     wget
-    ntfs3g
     obs-studio
     efibootmgr
 
@@ -70,8 +69,6 @@
     prismlauncher
     jdk21
   ];
-
-  users.defaultUserShell = pkgs.fish;
 
   programs.gnupg.agent = {
     enable = true;

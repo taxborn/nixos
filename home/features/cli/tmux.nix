@@ -11,6 +11,9 @@
     sensibleOnTop = true;
     plugins = with pkgs.tmuxPlugins; [
       vim-tmux-navigator
+      tmux-fzf
+      catppuccin
+      sensible
     ];
   };
 }

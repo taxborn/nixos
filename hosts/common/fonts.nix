@@ -16,12 +16,7 @@
     ];
 
     fontconfig = {
-      defaultFonts = {
-        serif = [ "Atkinson Hyperlegible Next" ];
-        sansSerif = [ "Atkinson Hyperlegible Next" ];
-        monospace = [ "JetBrainsMonoNL Nerd Fono Mono" ];
-        emoji = [ "Noto Color Emoji" ];
-      };
+      defaultFonts.emoji = [ "Noto Color Emoji" ];
       useEmbeddedBitmaps = true;
     };
   };

@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   imports = [
@@ -12,6 +12,10 @@
   ];
 
   networking.hostName = "uranium";
+
+  environment.systemPackages = with pkgs; [
+    ntfs3g
+  ];
 
   hardware = {
     graphics = {
@@ -34,5 +38,5 @@
     };
   };
 
-  system.stateVersion = "24.11"; # Did you read the comment?
+  system.stateVersion = "24.11";
 }
